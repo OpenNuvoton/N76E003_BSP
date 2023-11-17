@@ -19,13 +19,16 @@ __interrupt void WKT_ISR(void)
 void WakeUp_Timer_ISR (void)   __interrupt (17)     //ISR for self wake-up timer
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_WKCON_WKTF;
     wktflag = 1;
     GPIO_LED ^= 1;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 /************************************************************************************************************

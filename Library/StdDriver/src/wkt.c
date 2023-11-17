@@ -13,11 +13,14 @@
 #if 0
 void WKT_ISR (void) __interrupt (17)            /* Vector @  0x8B  */
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
 
     clr_WKCON_WKTF;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 #endif
 

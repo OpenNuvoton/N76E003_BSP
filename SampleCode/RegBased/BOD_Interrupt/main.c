@@ -19,12 +19,15 @@ __interrupt void BOD_ISR(void)
 void BOD_ISR (void) __interrupt (8)           // Vector @  0x43
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
 
     clr_BODCON0_BOF;
     bodflag=1;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 

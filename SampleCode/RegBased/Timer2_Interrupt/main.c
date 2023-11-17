@@ -16,10 +16,13 @@ __interrupt void Timer2_ISR(void)
 void Timer2_ISR(void)  __interrupt (5)
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
     clr_T2CON_TF2;
     GPIO_LED ^= 1;
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 /************************************************************************************************************/
 /* FUNCTION_PURPOSE: Main Loop                                                                              */

@@ -23,14 +23,17 @@ __interrupt void Timer1_ISR(void)
 void Timer1_ISR (void) __interrupt (3)         // vector=0x1B
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   /* following setting for reload Timer 0 counter, this is must for next time*/
     TH1 = TH1TMP;
     TL1 = TL1TMP;
   /* following clear flag is necessary for next time */
     clr_TCON_TF1;
     GPIO_LED ^= 1;
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 

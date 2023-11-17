@@ -21,12 +21,15 @@ __interrupt void ADC_ISR (void)
 void ADC_ISR (void) __interrupt (11)
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_ADCCON0_ADCF;                               //clear ADC interrupt flag
     adcintflag=1;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 /******************************************************************************

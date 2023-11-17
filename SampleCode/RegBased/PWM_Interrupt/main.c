@@ -22,11 +22,14 @@ __interrupt void INT0_ISR(void)
 void PWM_ISR (void) __interrupt (13)
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_PWMCON0_PWMF;               // clear PWM interrupt flag
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }	
 
 /******************************

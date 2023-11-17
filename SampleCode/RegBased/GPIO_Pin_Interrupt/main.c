@@ -24,7 +24,7 @@ __interrupt void Pin_INT_ISR(void)
 void PinInterrupt_ISR (void) __interrupt (7)
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     SFRS = 0;
     switch(PIF)
@@ -34,7 +34,10 @@ void PinInterrupt_ISR (void) __interrupt (7)
       default: break;
     }
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 /**

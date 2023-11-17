@@ -23,12 +23,15 @@ void Timer3_ISR(void)   __interrupt  (16)
 #endif
 {
   
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
 
     clr_T3CON_TF3;
     GPIO_LED ^= 1;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 /******************************

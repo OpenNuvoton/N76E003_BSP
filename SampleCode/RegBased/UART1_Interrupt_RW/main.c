@@ -17,7 +17,7 @@ __interrupt void SerialPort1_ISR(void)
 void SerialPort1_ISR(void) __interrupt (15)
 #endif
 {
-	 PUSH_SFRS;
+	 SFRS_TMP = SFRS;              /* for SFRS page */
 
     if (RI_1)
     {
@@ -34,7 +34,10 @@ void SerialPort1_ISR(void) __interrupt (15)
         }
     }
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 /****************************************************************************************************************
  * FUNCTION_PURPOSE: Main function 

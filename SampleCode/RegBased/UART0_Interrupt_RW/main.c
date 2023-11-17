@@ -17,7 +17,7 @@ __interrupt void SerialPort0_ISR(void)
 void Serial_ISR(void) __interrupt (4)
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
 
     if (RI)
     {
@@ -34,7 +34,10 @@ void Serial_ISR(void) __interrupt (4)
         }
     }
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 

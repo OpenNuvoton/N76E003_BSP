@@ -31,7 +31,7 @@ __interrupt void I2C_ISR(void)
 void I2C0_ISR(void) __interrupt (6)
 #endif
 {
-   PUSH_SFRS;
+   SFRS_TMP = SFRS;              /* for SFRS page */
 
   SFRS = 0;
   switch (I2STAT)
@@ -113,7 +113,10 @@ void I2C0_ISR(void) __interrupt (6)
 
     I2C0_SI_Check();
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 //========================================================================================================

@@ -10,43 +10,55 @@
 //-----------------------------------------------------------------------------------------------------------
 void INT0_ISR(void) __interrupt (0)          // Vector @  0x03
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_TCON_IE0;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void Timer0_ISR(void) __interrupt (1)         // Vector @  0x0B
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_TCON_TF0;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void INT1_ISR(void) __interrupt (2)          // Vector @  0x13
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_TCON_IE1;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void Timer1_ISR(void) __interrupt (3)        // Vector @  0x1B
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_TCON_TF1;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void UART0_ISR(void) __interrupt (4)         // Vector @  0x23
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_SCON_RI;
     clr_SCON_TI;
@@ -56,7 +68,7 @@ void UART0_ISR(void) __interrupt (4)         // Vector @  0x23
 //-----------------------------------------------------------------------------------------------------------
 void Timer2_ISR(void) __interrupt (5)        // Vector @  0x2B
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_T2CON_TF2;
 
@@ -65,25 +77,31 @@ void Timer2_ISR(void) __interrupt (5)        // Vector @  0x2B
 //-----------------------------------------------------------------------------------------------------------
 void I2C_ISR(void) __interrupt (6)           // Vector @  0x33
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_I2CON_SI;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void Pin_INT_ISR(void) __interrupt (7)       // Vector @  0x3B
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     PIF = 0;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void BOD_ISR(void) __interrupt (8)           // Vector @  0x43
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_BODCON0_BOF;
 
@@ -92,54 +110,69 @@ void BOD_ISR(void) __interrupt (8)           // Vector @  0x43
 //-----------------------------------------------------------------------------------------------------------
 void SPI_ISR(void) __interrupt (9)           // Vector @  0x4B
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_SPSR_SPIF;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void WDT_ISR(void) __interrupt (10)          // Vector @  0x53
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_WDCON_WDTF;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void ADC_ISR(void) __interrupt (11)          // Vector @  0x5B
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_ADCCON0_ADCF;
     
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void Capture_ISR(void) __interrupt (12)      // Vector @  0x63
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_CAPCON0_CAPF0;
     clr_CAPCON0_CAPF1;
     clr_CAPCON0_CAPF2;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void PWM_Brake_ISR(void) __interrupt (14)    // Vector @  0x73
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_FBD_FBF;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void UART1_ISR(void) __interrupt (15)          // Vector @  0x7B
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_SCON_1_RI_1;
     clr_SCON_1_TI_1;
@@ -149,20 +182,26 @@ void UART1_ISR(void) __interrupt (15)          // Vector @  0x7B
 //-----------------------------------------------------------------------------------------------------------
 void Timer3_ISR(void) __interrupt (16)        // Vector @  0x83
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_T3CON_TF3;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //-----------------------------------------------------------------------------------------------------------
 void WKT_ISR(void) __interrupt (17)            // Vector @  0x8B
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_WKCON_WKTF;
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 void Set_Interrupt_Priority_Level( unsigned char u8InterruptSource, unsigned char u8u8InterruptPriorityLevel)

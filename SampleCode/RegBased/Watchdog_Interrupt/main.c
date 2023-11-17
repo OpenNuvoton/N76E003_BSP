@@ -20,12 +20,15 @@ void WDT_ISR (void)   __interrupt (10)
 #endif
 
 {
-   PUSH_SFRS;
+   SFRS_TMP = SFRS;              /* for SFRS page */
    CLEAR_WDT_INTERRUPT_FLAG;
   /* Config Enable WDT reset and not clear couter trig reset */
     GPIO_LED ^= 1;
     wdtintflag = 1;
-   POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 /************************************************************************************************************/

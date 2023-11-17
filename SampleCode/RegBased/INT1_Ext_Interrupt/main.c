@@ -22,11 +22,14 @@ __interrupt void INT1_ISR(void)
 void INT0_ISR(void) __interrupt (2)          // Vector @  0x03
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
   
     clr_TCON_IE1;          //clr int flag wait next falling edge
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 /******************************

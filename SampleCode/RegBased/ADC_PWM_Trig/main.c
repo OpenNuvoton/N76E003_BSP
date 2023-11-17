@@ -20,12 +20,15 @@ __interrupt void ADC_ISR (void)
 void ADC_ISR (void) __interrupt (11)
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
 
     clr_ADCCON0_ADCF;                       // Clear ADC interrupt flag
     GPIO_LED ^= 1;                          // Check the P3.0 toggle at falling edge of PWM
 
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 /******************************************************************************

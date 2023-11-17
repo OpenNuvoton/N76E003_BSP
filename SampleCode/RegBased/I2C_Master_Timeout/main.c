@@ -27,11 +27,14 @@ __interrupt void Pin_INT_ISR(void)
 void Timer0_ISR (void) __interrupt (1)        // Vector @  0x0B
 #endif
 {
-    PUSH_SFRS;
+    SFRS_TMP = SFRS;              /* for SFRS page */
       SFRS = 0;
       i2cErrorFlag = 1;
       clr_TCON_TF0;
-    POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 //========================================================================================================
 void Init_I2C(void)

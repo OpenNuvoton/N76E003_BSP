@@ -25,7 +25,7 @@ __interrupt void Capture_ISR(void)
 void Capture_ISR (void) __interrupt (12)        // Vector @  0x63
 #endif
 {
-POP_SFRS;
+SFRS_TMP = SFRS;              /* for SFRS page */
 
     SFRS = 1;
     if (CAPCON0&SET_BIT0)
@@ -42,7 +42,10 @@ POP_SFRS;
     }
     t2captureflag = 1;
 
-POP_SFRS;
+    if (SFRS_TMP)                 /* for SFRS page */
+    {
+      ENABLE_SFR_PAGE1;
+    }
 }
 
 /******************************
