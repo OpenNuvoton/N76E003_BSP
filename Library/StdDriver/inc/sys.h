@@ -9,10 +9,10 @@
 #define  HIRC_16        7
 #define  HIRC_166       8
 
-void FsysSelect(unsigned char u8FsysMode);
-void ClockEnable(unsigned char u8FsysMode);
-void ClockDisable(unsigned char u8FsysMode);
-void ClockSwitch(unsigned char u8FsysMode);
-void MODIFY_HIRC(unsigned char u8HIRCSEL);
+void FsysSelect(uint8_t u8FsysMode);
+void ClockEnable(uint8_t u8FsysMode);
+void ClockDisable(uint8_t u8FsysMode);
+void ClockSwitch(uint8_t u8FsysMode);
+void MODIFY_HIRC(uint8_t u8HIRCSEL);
 
 

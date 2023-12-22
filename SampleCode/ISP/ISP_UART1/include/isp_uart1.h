@@ -67,8 +67,8 @@ extern  __data volatile uint8_t g_timer1Counter;
 extern  __data volatile uint8_t count;
 extern  __data volatile uint16_t g_timer0Counter;
 extern  __data volatile uint32_t g_checksum;
-extern  __data unsigned char PID_highB,PID_lowB,DID_highB,DID_lowB,CONF0,CONF1,CONF2,CONF4;
-extern  __data unsigned char recv_CONF0,recv_CONF1,recv_CONF2,recv_CONF4;extern  __data volatile uint32_t g_totalchecksum;
+extern  __data uint8_t PID_highB,PID_lowB,DID_highB,DID_lowB,CONF0,CONF1,CONF2,CONF4;
+extern  __data uint8_t recv_CONF0,recv_CONF1,recv_CONF2,recv_CONF4;extern  __data volatile uint32_t g_totalchecksum;
 #endif
 
 void MODIFY_HIRC_24(void);

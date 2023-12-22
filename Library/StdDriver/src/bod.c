@@ -27,7 +27,7 @@
   * @exmaple :  BOD_Open(ENBALE,VBOD_2_0, BOD_Reset_Enable);
   * @exmaple :  BOD_Open(Disable,0,0);
 */
-void BOD_Open(unsigned char u8bodstatus, unsigned char u8bodlevel, unsigned char u8bodresetstatus)
+void BOD_Open(uint8_t u8bodstatus, uint8_t u8bodlevel, uint8_t u8bodresetstatus)
 {
      SFRS=0; BODCON0=0;
 
@@ -50,7 +50,7 @@ void BOD_Open(unsigned char u8bodstatus, unsigned char u8bodlevel, unsigned char
   * @note    None
   * @exmaple :  BOD_LowPower(LPBOD_MODE3);
 */
-void BOD_LowPower(unsigned char u8LPBDD)
+void BOD_LowPower(uint8_t u8LPBDD)
 {
      SFRS=0; BODCON1=0;
      TA=0xAA;TA=0x55;BODCON1 |= u8LPBDD;
@@ -65,7 +65,7 @@ void BOD_LowPower(unsigned char u8LPBDD)
   * @note    None
   * @exmaple :  BOD_LowPower(LPBOD_MODE3);
 */
-void BOD_Interrupt (unsigned char u8bodINTstatus)
+void BOD_Interrupt (uint8_t u8bodINTstatus)
 {
     IE &= CLR_BIT5;
     IE |= (u8bodINTstatus<<5)&SET_BIT5;

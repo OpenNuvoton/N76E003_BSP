@@ -14,7 +14,7 @@
 ******************************/
 void main (void) 
 {
-	MODIFY_HIRC(HIRC_24);
+	MODIFY_HIRC(HIRC_166);
     PWM0_ClockSource(PWM_FSYS,128);                                  // define PWM0 clock source and divider.
   
     ENABLE_PWM0_CH0_P12_OUTPUT;                                      //Mark since P0.2 also ICE_CLK pin

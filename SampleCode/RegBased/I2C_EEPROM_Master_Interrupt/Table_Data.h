@@ -1,1 +1,1 @@
-extern code unsigned char Table_Data[32];
+extern code uint8_t Table_Data[32];

@@ -16,7 +16,7 @@
 #define   LPBOD_Mode_3       0x06
 
 
-void BOD_Open(unsigned char u8bodstatus, unsigned char u8bodlevel, unsigned char u8bodresetstatus);
-void BOD_LowPower(unsigned char u8LPBDD);
-void BOD_Interrupt (unsigned char u8bodINTstatus);
+void BOD_Open(uint8_t u8bodstatus, uint8_t u8bodlevel, uint8_t u8bodresetstatus);
+void BOD_LowPower(uint8_t u8LPBDD);
+void BOD_Interrupt (uint8_t u8bodINTstatus);
 

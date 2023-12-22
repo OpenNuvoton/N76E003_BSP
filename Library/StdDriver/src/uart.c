@@ -10,7 +10,15 @@ BIT PRINTFG, uart0_receive_flag, uart1_receive_flag;
 uint8_t uart0_receive_data, uart1_receive_data;
 
 #if 0
+/* UART0 interrupt vector demo */
+#if defined __C51__
+void Serial_ISR(void)  interrupt 4
+#elif defined __ICC8051__
+#pragma vector=0x23
+__interrupt void SerialPort0_ISR(void)
+#elif defined __SDCC__
 void Serial_ISR(void) __interrupt (4)
+#endif
 {
     SFRS_TMP = SFRS;              /* for SFRS page */
   
@@ -33,10 +41,17 @@ void Serial_ISR(void) __interrupt (4)
     {
       ENABLE_SFR_PAGE1;
     }
-}	
+}
 
-
-
+/* UART1 interrupt vector demo */
+#if defined __C51__
+void SerialPort1_ISR(void) interrupt 15
+#elif defined __ICC8051__
+#pragma vector=0x7B
+__interrupt void SerialPort1_ISR(void)
+#elif defined __SDCC__
+void SerialPort1_ISR(void) __interrupt (15)
+#endif
 void SerialPort1_ISR(void) __interrupt (15)
 {
 	 SFRS_TMP = SFRS;              /* for SFRS page */
@@ -63,8 +78,22 @@ void SerialPort1_ISR(void) __interrupt (15)
 }
 #endif
 
-/*MS51 new version buadrate */
-void UART_Open(unsigned long u32SysClock, unsigned char u8UARTPort,unsigned long u32Baudrate)
+
+  /**
+  * @brief This API configures UART0 
+  * @param[in] u32SysClock . Valid values as Fsys clock:
+  *                       - \ref 24000000 means Internal HIRC 24MHz .
+  * @param[in] u8UARTPort . Enabled UART port
+  *                       - \ref UART0_Timer1
+  *                       - \ref UART0_Timer3
+  *                       - \ref UART1
+  * @param[in] u32Baudrate . 
+  *                       - \ref 115200
+  *                       - \ref 200000
+  * @note      None.
+  * @exmaple : UART_Open(16600000,UART0_Timer1,115200);
+  */
+void UART_Open(uint32_t u32SysClock, uint8_t u8UARTPort,uint32_t u32Baudrate)
 {
   switch(u8UARTPort)
   {
@@ -93,13 +122,12 @@ void UART_Open(unsigned long u32SysClock, unsigned char u8UARTPort,unsigned long
           T3CON = 0x80;     //T3PS2=0,T3PS1=0,T3PS0=0(Prescale=1), UART1 in MODE 1
           RH3    = HIBYTE(65536 - (u32SysClock/16/u32Baudrate));  
           RL3    = LOBYTE(65536 - (u32SysClock/16/u32Baudrate));     
-          set_T3CON_TR3;             //Trigger Timer3                                                             
+          set_T3CON_TR3;             //Trigger Timer3
       break; 
   }
 }
 
-#if 0 
-unsigned char Receive_Data(unsigned char UARTPort)
+uint8_t Receive_Data(uint8_t UARTPort)
 {
     UINT8 c;
     switch (UARTPort)
@@ -117,8 +145,18 @@ unsigned char Receive_Data(unsigned char UARTPort)
     }
     return (c);
 }
-#endif
 
+
+  /**
+  * @brief This API configures UART send byte 
+  * @param[in] UARTPort . Valid values as Fsys clock:
+  *                       - \ref UART0
+  *                       - \ref UART1
+  * @param[in] c . UART send HEX value
+  *                       - \ref 0x55 
+  * @note      None.
+  * @exmaple : UART_Send_Data(UART0, 0x55);
+  */
 void UART_Send_Data(uint8_t UARTPort, uint8_t c)
 {
     DISABLE_UART0_INTERRUPT;
@@ -138,10 +176,16 @@ void UART_Send_Data(uint8_t UARTPort, uint8_t c)
     ENABLE_UART0_INTERRUPT;
 }
 
-void Enable_UART0_VCOM_printf_24M_115200(void)
+  /**
+  * @brief This API configures UART0 printf function base on HIRC modify to 16.6MHz
+  * @param[in]None 
+  * @note      None.
+  * @exmaple : Enable_UART0_VCOM_printf_166M_115200();
+  */
+void Enable_UART0_VCOM_printf_166M_115200(void)
 {
     P06_QUASI_MODE;
-    UART_Open(24000000,UART0_Timer1,115200);
+    UART_Open(16600000,UART0_Timer1,115200);
     ENABLE_UART0_PRINTF;
     DISABLE_UART0_INTERRUPT;
 }

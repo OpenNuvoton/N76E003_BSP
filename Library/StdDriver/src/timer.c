@@ -45,7 +45,7 @@ _pop_(SFRS);
 }
 #endif
 
-void Timer0_AutoReload_Interrupt_Initial(unsigned char u8SYSCLK, unsigned long u32DLYUnit)
+void Timer0_AutoReload_Interrupt_Initial(uint8_t u8SYSCLK, uint32_t u32DLYUnit)
 {
     TIMER0_FSYS_DIV12;                               /* T0M=0, Timer0 Clock = Fsys/12   */
     ENABLE_TIMER0_MODE1;                             /* Timer0 as 16-bit mode           */
@@ -91,7 +91,7 @@ void Timer1_ISR (void) __interrupt (3)        // Vector @  0x1B
 }
 #endif
 
-void Timer1_AutoReload_Interrupt_Initial(unsigned char u8SYSCLK, unsigned long u32DLYUnit)
+void Timer1_AutoReload_Interrupt_Initial(uint8_t u8SYSCLK, uint32_t u32DLYUnit)
 {
     TIMER1_FSYS_DIV12;                               /* T1M=0, Timer1 Clock = Fsys/12   */
     ENABLE_TIMER1_MODE1;                             /* Timer 1 as 16-bit mode           */
@@ -128,7 +128,7 @@ _pop_(SFRS);
 }
 #endif
 
-void Timer2_AutoReload_Interrupt_Initial(unsigned char u8SYSCLK, unsigned long u32DLYUnit)
+void Timer2_AutoReload_Interrupt_Initial(uint8_t u8SYSCLK, uint32_t u32DLYUnit)
 {
     TIMER2_AUTO_RELOAD_DELAY_MODE;
     SFRS = 0;T2MOD&=0x8F;T2MOD|=0x60;               /* fix divider 256 */
@@ -163,7 +163,7 @@ _pop_(SFRS);
 }
 #endif 
 
-void Timer3_AutoReload_Interrupt_Initial(unsigned char u8SYSCLK, unsigned long u32DLYUnit)
+void Timer3_AutoReload_Interrupt_Initial(uint8_t u8SYSCLK, uint32_t u32DLYUnit)
 {
     SFRS = 0;
     T3CON&=0xF8;

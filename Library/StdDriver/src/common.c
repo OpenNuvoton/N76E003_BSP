@@ -25,7 +25,7 @@ __data uint8_t TA_REG_TMP,BYTE_TMP,SFRS_TMP;
  * @details     None
 **/
 #if defined __C51__
-uint8_t Read_APROM_BYTE(unsigned int code *u16_addr)
+uint8_t Read_APROM_BYTE(uint16_t code *u16_addr)
 
 #elif defined __ICC8051__
 uint8_t Read_APROM_BYTE(const uint16_t __code *u16_addr)
@@ -35,7 +35,7 @@ uint8_t Read_APROM_BYTE(const uint16_t __code *u16_addr)
 
 #endif
 {
-    unsigned char rdata;
+    uint8_t rdata;
     rdata = *u16_addr >> 8;
     return rdata;
 }
@@ -49,9 +49,9 @@ uint8_t Read_APROM_BYTE(const uint16_t __code *u16_addr)
  * @return      None
  * @details     None
  */
-void Software_Reset(unsigned char u8Bootarea)
+void Software_Reset(uint8_t u8Bootarea)
 {
-    unsigned char boottemp;
+    uint8_t boottemp;
     boottemp = (0x80|u8Bootarea);
     TA = 0xAA;
     TA = 0x55;
@@ -65,7 +65,7 @@ void Software_Reset(unsigned char u8Bootarea)
  * @return      None
  * @details     None
  */
-void PowerDown_Mode(unsigned char PDStatus)
+void PowerDown_Mode(uint8_t PDStatus)
 {
     if (PDStatus)
     {
@@ -82,7 +82,7 @@ void PowerDown_Mode(unsigned char PDStatus)
  * @return      None
  * @details     None
  */
-void Idle_Mode(unsigned char IdleStatus)
+void Idle_Mode(uint8_t IdleStatus)
 {
     if (IdleStatus)
     {

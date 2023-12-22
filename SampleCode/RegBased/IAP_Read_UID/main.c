@@ -17,8 +17,8 @@ void main(void)
   uint8_t ct;
 
 /* Modify HIRC to 24MHz for UART printf function only */
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
 
     Read_UID();
     printf ("\n\r MG51 UID = ");

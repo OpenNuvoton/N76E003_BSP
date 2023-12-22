@@ -43,9 +43,9 @@ BIT  ConfigModifyFlag;
  * @details     Page erase LDROM area base on data start address 
  * @example      Erase_LDROM(0x0000,2048);
  */
-void Erase_LDROM(unsigned int u16IAPStartAddress,unsigned int u16IAPDataSize)
+void Erase_LDROM(uint16_t u16IAPStartAddress,uint16_t u16IAPDataSize)
 {   
-    unsigned int u16Count;
+    uint16_t u16Count;
 
     set_CHPCON_IAPEN;                    // Enable IAP function
     set_IAPUEN_LDUEN;                    //  LDROM modify Enable
@@ -69,9 +69,9 @@ void Erase_LDROM(unsigned int u16IAPStartAddress,unsigned int u16IAPDataSize)
  * @details     Check each byte of LDROM is FFH or not.
  * @example      LDROM_BlanckCheck(0x0000,2048);
  */
-void Erase_Verify_LDROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
+void Erase_Verify_LDROM(uint16_t u16IAPStartAddress, uint16_t u16IAPDataSize)
 {   
-    unsigned int u16Count;
+    uint16_t u16Count;
     set_CHPCON_IAPEN;
     IAPAL = LOBYTE(u16IAPStartAddress);
     IAPAH = HIBYTE(u16IAPStartAddress);
@@ -98,9 +98,9 @@ void Erase_Verify_LDROM(unsigned int u16IAPStartAddress, unsigned int u16IAPData
  * @details     Copy IAPDataBuf to LDROM
  * @example      LDROM_Program(0x0000,1024);
  */
-void Program_LDROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
+void Program_LDROM(uint16_t u16IAPStartAddress, uint16_t u16IAPDataSize)
 {   
-    unsigned int u16Count;
+    uint16_t u16Count;
 
     set_CHPCON_IAPEN;
     set_IAPUEN_LDUEN;    
@@ -131,9 +131,9 @@ void Program_LDROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
  * @details     Check with XRAM IAPDataBuf with LDROM
  * @example      LDROM_Program_Verify(0x0000,1024);
  */
-void Program_Verify_LDROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
+void Program_Verify_LDROM(uint16_t u16IAPStartAddress, uint16_t u16IAPDataSize)
 {   
-    unsigned int u16Count;
+    uint16_t u16Count;
 
     set_CHPCON_IAPEN;
     IAPAL = LOBYTE(u16IAPStartAddress);
@@ -162,9 +162,9 @@ void Program_Verify_LDROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDa
  * @details     Page erase APROM area base on data start address 
  * @example      Erase_APROM(0x0000,2048);
  */
-void Erase_APROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
+void Erase_APROM(uint16_t u16IAPStartAddress, uint16_t u16IAPDataSize)
 {   
-    unsigned int u16Count;
+    uint16_t u16Count;
 
     set_CHPCON_IAPEN;                    // Enable IAP function
     set_IAPUEN_APUEN;                    // APROM modify Enable
@@ -188,9 +188,9 @@ void Erase_APROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
  * @details     Check each byte of APPROM is FFH or not.
  * @example      APROM_Blank_Check(0x0000,2048);
  */
-void Erase_Verify_APROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
+void Erase_Verify_APROM(uint16_t u16IAPStartAddress, uint16_t u16IAPDataSize)
 {   
-    unsigned int u16Count;
+    uint16_t u16Count;
   
     set_CHPCON_IAPEN;
     IAPAL = LOBYTE(u16IAPStartAddress);
@@ -217,9 +217,9 @@ void Erase_Verify_APROM(unsigned int u16IAPStartAddress, unsigned int u16IAPData
  * @details     Copy APDataBuf to APROM
  * @example      APROM_Program(0x0000,1024);
  */
-void Program_APROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
+void Program_APROM(uint16_t u16IAPStartAddress, uint16_t u16IAPDataSize)
 {   
-    unsigned int u16Count;
+    uint16_t u16Count;
 
     set_CHPCON_IAPEN;
     set_IAPUEN_APUEN;    
@@ -249,9 +249,9 @@ void Program_APROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
  * @details     Check with XRAM IAPDataBuf with APROM
  * @example      APROM_Program_Verify(0x0000,1024);
  */
-void Program_Verify_APROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDataSize)
+void Program_Verify_APROM(uint16_t u16IAPStartAddress, uint16_t u16IAPDataSize)
 {   
-    unsigned int u16Count;
+    uint16_t u16Count;
 
     set_CHPCON_IAPEN;
     IAPAL = LOBYTE(u16IAPStartAddress);
@@ -282,9 +282,9 @@ void Program_Verify_APROM(unsigned int u16IAPStartAddress, unsigned int u16IAPDa
                 3. All interrupt is disabled in modify CONFIG process.
  * @example     Modify_CONFIG(0xEF,0xFB,0xEF,0xFF,0xFF);
  */
-void Modify_CONFIG(unsigned char u8CF0,unsigned char u8CF1,unsigned char u8CF2,unsigned char u8CF3,unsigned char u8CF4)
+void Modify_CONFIG(uint8_t u8CF0,uint8_t u8CF1,uint8_t u8CF2,uint8_t u8CF3,uint8_t u8CF4)
 {   
-    unsigned char u8Count;
+    uint8_t u8Count;
 
     if(PCON&SET_BIT4)        /* Check with power on flag. Only the first power on check with CONFIG */
     {
@@ -400,7 +400,7 @@ CFCLOSE:
  */
 void Read_CONFIG(void)
 {
-    unsigned char u8Count;
+    uint8_t u8Count;
 
         set_CHPCON_IAPEN;                    // Enable IAP function
         IAPCN = BYTE_READ_CONFIG;
@@ -450,7 +450,7 @@ void Read_UID(void)
  */
 void Read_UCID(void)
 {   
-    unsigned char u8Count;
+    uint8_t u8Count;
 
     set_CHPCON_IAPEN;
     IAPAL = 0x20;
@@ -476,7 +476,7 @@ void Read_UCID(void)
 */
 void Read_DID(void)
 {   
-    unsigned char u8Count;
+    uint8_t u8Count;
 
     set_CHPCON_IAPEN;
     IAPAL = 0x00;
@@ -501,7 +501,7 @@ void Read_DID(void)
 */
 void Read_PID(void)
 {   
-    unsigned char u8Count;
+    uint8_t u8Count;
 
     set_CHPCON_IAPEN;
     IAPAL = 0x02;

@@ -14,8 +14,8 @@
 void main(void)
 {
 /* UART0 settting for printf function */
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n\r Test start ...");
 
     printf ("\n\r PWM frequency   = Fpwm/((PWMPH,PWMPL)+1) = (24MHz/8)/(0x7CF+1) = 1.5KHz (1ms)");

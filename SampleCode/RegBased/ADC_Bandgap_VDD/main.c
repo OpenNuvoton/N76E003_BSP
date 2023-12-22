@@ -22,8 +22,8 @@ void main (void)
 {
     uint16_t ADC_BG_Result;
 
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n\r Test start ...");
 
 /* ADC sampling timing setting for Bandgap*/  

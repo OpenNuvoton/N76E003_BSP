@@ -20,7 +20,7 @@
   *             I2C bus clock = PCLK / (4*(u32I2CCLK+1).
   * @exmaple :  I2C_Open(24000000,100000);
   */
-void I2C_Master_Open(unsigned long u32SYSCLK, unsigned long u32I2CCLK)
+void I2C_Master_Open(uint32_t u32SYSCLK, uint32_t u32I2CCLK)
 {
     SFRS = 0x00;
     I2CLK = (u32SYSCLK/4/u32I2CCLK-1); 
@@ -42,7 +42,7 @@ void I2C_Master_Open(unsigned long u32SYSCLK, unsigned long u32I2CCLK)
   *             I2C bus clock = PCLK / (4*(u32I2CCLK+1).
   * @exmaple :  I2C_Open(0xA4);
   */
-void I2C_Slave_Open( unsigned char u8SlaveAddress0)
+void I2C_Slave_Open( uint8_t u8SlaveAddress0)
 {
         SFRS = 0; 
         I2ADDR = u8SlaveAddress0; 
@@ -72,7 +72,7 @@ void I2C_Close(void)
   *                  - \ref Disable
   * @exmaple :  I2C_Interrupt();
 */
-void I2C_Interrupt(unsigned char u8I2CStatus)
+void I2C_Interrupt(uint8_t u8I2CStatus)
 {
     SFRS = 0;
          switch (u8I2CStatus)
@@ -91,9 +91,9 @@ void I2C_Interrupt(unsigned char u8I2CStatus)
   * @return     I2C status data 
   * @exmaple :  I2C_GetStatus(I2C0);
 */
-unsigned char I2C_GetStatus(void)
+uint8_t I2C_GetStatus(void)
 {
-    unsigned char u8i2cstat;
+    uint8_t u8i2cstat;
     SFRS = 0;
      u8i2cstat=I2STAT;
     return (u8i2cstat);
@@ -111,7 +111,7 @@ unsigned char I2C_GetStatus(void)
  * @Note       This function enable time-out function and configure DIV4 to support longer time-out.
  * @example    I2C_Timeout(Enable);
  */
-void I2C_Timeout( unsigned char u8I2CTRStatus )
+void I2C_Timeout( uint8_t u8I2CTRStatus )
 {
         switch (u8I2CTRStatus)
         {

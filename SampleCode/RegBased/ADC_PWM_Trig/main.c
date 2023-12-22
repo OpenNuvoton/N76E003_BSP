@@ -40,8 +40,8 @@ void main (void)
 
     GPIO_LED_QUASI_MODE;
 /* Initial UART0 for printf */
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n Test start ...");
 /*-------------------------------------------------
   ADC trig initial setting

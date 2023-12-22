@@ -19,7 +19,7 @@ uint8_t __xdata page_buffer[128];
 uint8_t __xdata xd_tmp[128];
 #endif
 
-unsigned char WriteDataToOnePage(uint16_t u16_addr,const uint8_t *pDat,uint8_t num);
+uint8_t WriteDataToOnePage(uint16_t u16_addr,const uint8_t *pDat,uint8_t num);
 
 /**
  * @brief       Write Dataflash as EEPROM, 
@@ -106,15 +106,15 @@ void Read_DATAFLASH_ARRAY(uint16_t u16_addr, uint8_t *pDat, uint16_t num)
 #if defined __C51__
         pDat[i] = *(uint8_t code *)(u16_addr+i);
 #elif defined __ICC8051__
-        pDat[i] = *(unsigned char __code *)(u16_addr+i);
+        pDat[i] = *(uint8_t __code *)(u16_addr+i);
 #elif defined __SDCC__
-        pDat[i] = *(unsigned char __code *)(u16_addr+i);
+        pDat[i] = *(uint8_t __code *)(u16_addr+i);
 #endif
     }
 }
 
 //-----------------------------------------------------------------------------------------------------------
-unsigned char WriteDataToOnePage(uint16_t u16_addr,const uint8_t *pDat,uint8_t num)
+uint8_t WriteDataToOnePage(uint16_t u16_addr,const uint8_t *pDat,uint8_t num)
 {
 
 #if defined __C51__

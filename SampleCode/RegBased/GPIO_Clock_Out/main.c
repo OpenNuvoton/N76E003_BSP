@@ -26,7 +26,7 @@ void main(void)
     CKDIV = 80;     /* Divider *2 */
 #else 
 /* 24MHz HIRC clock out demo */
-    MODIFY_HIRC(HIRC_24);
+    MODIFY_HIRC(HIRC_166);
     CKDIV = 120    /* Divider *2 */
 #endif
 /*Please measure P1.1 (CLKO) pin for system clock output, it should as system clock;    */

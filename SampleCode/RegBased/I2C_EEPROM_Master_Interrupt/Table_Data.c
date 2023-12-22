@@ -1,4 +1,4 @@
-code unsigned char Table_Data[32] = 
+code uint8_t Table_Data[32] = 
 {
 0x01 ,
 0xf0 ,

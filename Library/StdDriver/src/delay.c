@@ -20,7 +20,7 @@
   * @note    If use LIRC or LXT as Fsys need adjust this marco.
   * @exmaple :  Timer0_Delay(16000000,200,1000);
 */
-void Timer0_Delay(unsigned long u32SYSCLK, unsigned int u16CNT, unsigned int u16DLYUnit)
+void Timer0_Delay(uint32_t u32SYSCLK, uint16_t u16CNT, uint16_t u16DLYUnit)
 {
       uint8_t TL0TMP, TH0TMP;
   
@@ -55,7 +55,7 @@ void Timer0_Delay(unsigned long u32SYSCLK, unsigned int u16CNT, unsigned int u16
   * @note    If use LIRC or LXT as Fsys need adjust this marco.
   * @exmaple :  Timer1_Delay(24000000,5,1000);
 */
-void Timer1_Delay(unsigned long u32SYSCLK, unsigned int u16CNT, unsigned int u16DLYUnit)
+void Timer1_Delay(uint32_t u32SYSCLK, uint16_t u16CNT, uint16_t u16DLYUnit)
 {
 	uint8_t TL1TMP,TH1TMP;
 
@@ -91,7 +91,7 @@ void Timer1_Delay(unsigned long u32SYSCLK, unsigned int u16CNT, unsigned int u16
   * @note    If use LIRC or LXT as Fsys need adjust this marco.
   * @exmaple :  Timer2_Delay(24000000,128,5,1000);
 */
-void Timer2_Delay(unsigned long u32SYSCLK,unsigned int u16TMDIV, unsigned int u16CNT, unsigned long u32DLYUnit)
+void Timer2_Delay(uint32_t u32SYSCLK,uint16_t u16TMDIV, uint16_t u16CNT, uint32_t u32DLYUnit)
 {
 	uint8_t TL2TMP,TH2TMP;
   
@@ -138,7 +138,7 @@ void Timer2_Delay(unsigned long u32SYSCLK,unsigned int u16TMDIV, unsigned int u1
   * @note    If use LIRC or LXT as Fsys need adjust this marco.
   * @exmaple :  Timer3_Delay(24000000,16,5,1000);
 */
-void Timer3_Delay(unsigned long u32SYSCLK,unsigned char u8TMDIV, unsigned int u16CNT, unsigned long u32DLYUnit)
+void Timer3_Delay(uint32_t u32SYSCLK,uint8_t u8TMDIV, uint16_t u16CNT, uint32_t u32DLYUnit)
 {
 	uint8_t TL3TMP,TH3TMP;
   
@@ -177,7 +177,7 @@ void Timer3_Delay(unsigned long u32SYSCLK,unsigned char u8TMDIV, unsigned int u1
 //**** 1. Delay value
 //**** 2. Define unit
 //**** For example: Timer3_Delay(5,UNIT_100US) = Delay 100us
-void Timer_Interrupt_Enable(unsigned char u8TM)
+void Timer_Interrupt_Enable(uint8_t u8TM)
 {
     switch(u8TM)
     {

@@ -35,7 +35,7 @@ void INT0_ISR(void) __interrupt (0)          // Vector @  0x03
 
 void main (void) 
 {
-    MODIFY_HIRC(HIRC_24);
+    MODIFY_HIRC(HIRC_166);
     P30_QUASI_MODE;                      //setting INT0 pin P3.0 as Quasi mode with internal pull high  
     P30 = 1;
     INT0_FALLING_EDGE_TRIG;              //setting trig condition level or edge

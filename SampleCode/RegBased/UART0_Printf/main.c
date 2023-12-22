@@ -10,8 +10,8 @@ void main (void)
 {
 
 /* Modify HIRC to 24MHz is for UART baud rate deviation not over 1% */
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
 
     printf("\n Hello world!");
     while(1);

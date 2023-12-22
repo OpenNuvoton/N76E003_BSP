@@ -15,10 +15,10 @@
 ******************************/
 void main (void) 
 {
-    unsigned char i;
+    uint8_t i;
 
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
 
     printf ("\n CONFIG enable LDROM area first ...");
     printf ("\n Toggle P05 to low to start test ...");

@@ -71,7 +71,7 @@ void Slave_Polling_Send_Data(void)
 ******************************/
 void main(void)
 {
-    MODIFY_HIRC(HIRC_24);
+    MODIFY_HIRC(HIRC_166);
     SPI_Initial();
   /* Slave interrupt receive data */
     Slave_Polling_Receive_Data();           // Wait Slave receive data from master use the interrupt

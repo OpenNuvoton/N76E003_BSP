@@ -15,7 +15,7 @@
  * @details     none
  * @example     TIMER2_Capture(IC0,CaptureRising,7);
  */
-void TIMER2_Capture(unsigned char u8CAPSource, unsigned char u8CAPLevel, unsigned char u8TM2DIV)
+void TIMER2_Capture(uint8_t u8CAPSource, uint8_t u8CAPLevel, uint8_t u8TM2DIV)
 {
     SFRS = 0x00;
     T2MOD&=0x0F;
@@ -76,7 +76,7 @@ void TIMER2_Capture(unsigned char u8CAPSource, unsigned char u8CAPLevel, unsigne
  * @details     none
  * @example      TIMER2_Capture_Interrupt(Enable);
  */
-void TIMER2_Capture_Interrupt(unsigned char u8CAPINT)
+void TIMER2_Capture_Interrupt(uint8_t u8CAPINT)
 {
     switch (u8CAPINT)
     {

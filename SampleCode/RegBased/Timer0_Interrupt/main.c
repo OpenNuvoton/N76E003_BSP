@@ -40,7 +40,7 @@ void Timer0_ISR (void) __interrupt (1)          // vector=0x0B
 void main (void)
 {
 
-    MODIFY_HIRC(HIRC_24);
+    MODIFY_HIRC(HIRC_166);
     GPIO_LED_QUASI_MODE;
 
     Timer0_AutoReload_Interrupt_Initial(24,32000);

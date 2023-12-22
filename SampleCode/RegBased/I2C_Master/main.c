@@ -38,7 +38,7 @@ void I2C_Error(void)
 //--------------------------------------------------------------------------------------------
 void I2C_Write_Process(UINT8 u8DAT)
 {
-    unsigned char  u8Count;
+    uint8_t  u8Count;
     /* Write Step1 */
     set_I2CON_STA;                                    /* Send Start bit to I2C EEPROM */
     clr_I2CON_SI;
@@ -77,7 +77,7 @@ void I2C_Write_Process(UINT8 u8DAT)
 //--------------------------------------------------------------------------------------------
 void I2C_Read_Process(UINT8 u8DAT)
 {
-    unsigned char  u8Count;
+    uint8_t  u8Count;
     /* Read Step1 */
     set_I2CON_STA;
     clr_I2CON_SI;          

@@ -39,7 +39,7 @@ void INT0_ISR(void) __interrupt (2)          // Vector @  0x03
 ******************************/
 void main (void) 
 {
-    MODIFY_HIRC(HIRC_24);
+    MODIFY_HIRC(HIRC_166);
     P17_QUASI_MODE;                      //setting INT0 pin P1.7 as Quasi mode with internal pull high  
     P17 = 1;
     INT1_LOW_LEVEL_TRIG;                //setting trig condition level or edge

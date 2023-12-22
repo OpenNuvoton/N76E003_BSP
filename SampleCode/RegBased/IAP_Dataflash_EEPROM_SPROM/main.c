@@ -8,14 +8,14 @@
 
 struct
 {
-    unsigned int a;
-    unsigned long b;
-    unsigned char  c;
+    uint16_t a;
+    uint32_t b;
+    uint8_t  c;
 
 } StructData;
 
-unsigned char ArrayData[50];
-unsigned char i;
+uint8_t ArrayData[50];
+uint8_t i;
 
 /**
  * @brief       IAP program dataflash as EEPROM
@@ -26,14 +26,14 @@ unsigned char i;
 
 void main(void)
 {
-    unsigned int system16highsite;
+    uint16_t system16highsite;
 	
 /* UART0 initial setting
   * include sys.c in Library for modify HIRC value to 24MHz
   * include uart.c in Library for UART initial setting
 */
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n\r Toggle P05 Test start ...");
 
     /*loop here while P46 = 1; */
@@ -51,7 +51,7 @@ void main(void)
     StructData.c=0xA7;
 
     Write_SPROM_DATAFLASH_ARRAY(1, ArrayData, 50); //write 50 bytes
-    Write_SPROM_DATAFLASH_ARRAY(0x10, (unsigned char *)&StructData, sizeof(StructData)); //write structure
+    Write_SPROM_DATAFLASH_ARRAY(0x10, (uint8_t *)&StructData, sizeof(StructData)); //write structure
 
     /*call read byte */
 #if defined __C51__

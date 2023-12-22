@@ -7,16 +7,16 @@
 #include "numicro_8051.h"
 
 /****************************************************************/
-void Spi_Write_Byte(unsigned char u8SpiWB)
+void Spi_Write_Byte(uint8_t u8SpiWB)
 {
     SPDR = u8SpiWB;
     while(!(SPSR&0x80));
     clr_SPSR_SPIF;
 }
 /****************************************************************/
-unsigned char Spi_Read_Byte(unsigned char u8SpiWB)
+uint8_t Spi_Read_Byte(uint8_t u8SpiWB)
 {
-    unsigned char u8SpiRB;
+    uint8_t u8SpiRB;
     SPDR = u8SpiWB;
     while(!(SPSR&0x80));
     u8SpiRB = SPDR;

@@ -118,8 +118,8 @@
 
 
 
-void Timer0_Delay(unsigned long u32SYSCLK, unsigned int u16CNT, unsigned int u6DLYUnit);
-void Timer1_Delay(unsigned long u32SYSCLK, unsigned int u16CNT, unsigned int u6DLYUnit);
-void Timer2_Delay(unsigned long u32SYSCLK,unsigned int u16TMDIV, unsigned int u16CNT, unsigned long u32DLYUnit);
-void Timer3_Delay(unsigned long u32SYSCLK,unsigned char u8TMDIV, unsigned int u16CNT, unsigned long u32DLYUnit);
-void Timer_Interrupt_Enable(unsigned char u8TM);
+void Timer0_Delay(uint32_t u32SYSCLK, uint16_t u16CNT, uint16_t u6DLYUnit);
+void Timer1_Delay(uint32_t u32SYSCLK, uint16_t u16CNT, uint16_t u6DLYUnit);
+void Timer2_Delay(uint32_t u32SYSCLK,uint16_t u16TMDIV, uint16_t u16CNT, uint32_t u32DLYUnit);
+void Timer3_Delay(uint32_t u32SYSCLK,uint8_t u8TMDIV, uint16_t u16CNT, uint32_t u32DLYUnit);
+void Timer_Interrupt_Enable(uint8_t u8TM);

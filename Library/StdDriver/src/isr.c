@@ -204,7 +204,7 @@ void WKT_ISR(void) __interrupt (17)            // Vector @  0x8B
     }
 }
 
-void Set_Interrupt_Priority_Level( unsigned char u8InterruptSource, unsigned char u8u8InterruptPriorityLevel)
+void Set_Interrupt_Priority_Level( uint8_t u8InterruptSource, uint8_t u8u8InterruptPriorityLevel)
 {
    switch (u8InterruptSource)
    {

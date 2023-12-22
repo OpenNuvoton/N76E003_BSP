@@ -16,7 +16,7 @@
  * @note        
  * @example PWM0_ClockSource(PWM0_HIRC,128);
  */
-void PWM0_ClockSource(unsigned char u8PWMCLKSource, unsigned char u8PWM0CLKDIV)
+void PWM0_ClockSource(uint8_t u8PWMCLKSource, uint8_t u8PWM0CLKDIV)
 {
     switch (u8PWMCLKSource)
     {
@@ -47,11 +47,11 @@ void PWM0_ClockSource(unsigned char u8PWMCLKSource, unsigned char u8PWM0CLKDIV)
  * @note  none       
  * @example PWM0_ConfigOutputChannel(0,Independent,EdgeAligned,0x6FF,10);
  */
-void PWM0_ConfigOutputChannel(unsigned char u8PWM0ChannelNum,
-                              unsigned char u8PWM0OPMode,
-                              unsigned char u8PWM0PwmType,
-                              unsigned long u32PWM0Frequency,
-                              unsigned int u16PWM0DutyCycle)
+void PWM0_ConfigOutputChannel(uint8_t u8PWM0ChannelNum,
+                              uint8_t u8PWM0OPMode,
+                              uint8_t u8PWM0PwmType,
+                              uint32_t u32PWM0Frequency,
+                              uint16_t u16PWM0DutyCycle)
 {
   set_SFRS_SFRPAGE;
   switch (u8PWM0OPMode)
@@ -86,7 +86,7 @@ void PWM0_ConfigOutputChannel(unsigned char u8PWM0ChannelNum,
  * @note        
  * @example PWM0_DeadZoneEnable(PWM0_CH01,0x55);
   */
-void PWM0_DeadZoneEnable(unsigned char u8PWM0Pair, unsigned int u16PWM0DZValue)
+void PWM0_DeadZoneEnable(uint8_t u8PWM0Pair, uint16_t u16PWM0DZValue)
 {
     SFRS = 0x01;
     BYTE_TMP = 0;

@@ -28,10 +28,10 @@
 
 #define LOOP_SIZE                 10
 
-unsigned int Tx_Addr;
-unsigned char Tx_Dat;
-unsigned int Rx_Addr;
-unsigned char Rx_Dat;
+uint16_t Tx_Addr;
+uint8_t Tx_Dat;
+uint16_t Rx_Addr;
+uint8_t Rx_Dat;
 BIT Write_End_Flag;
 BIT Read_End_Flag;
 
@@ -182,9 +182,9 @@ void I2C0_Master_Rx_Isr(void)
 
 
 //========================================================================================================
-BIT I2C0_Write(unsigned int u16I2Caddr, unsigned char u8I2Cdat)
+BIT I2C0_Write(uint16_t u16I2Caddr, uint8_t u8I2Cdat)
 {
-    unsigned long count;
+    uint32_t count;
     count = 0;
     Write_End_Flag = 0;
     I2C_Func = I2C0_Master_Tx_Isr;
@@ -209,9 +209,9 @@ BIT I2C0_Write(unsigned int u16I2Caddr, unsigned char u8I2Cdat)
 }
 
 /*========================================================================================================*/
-BIT I2C0_Read(unsigned int u8I2Caddr, unsigned char *u8I2Cdat)
+BIT I2C0_Read(uint16_t u8I2Caddr, uint8_t *u8I2Cdat)
 {
-    unsigned long  count;
+    uint32_t  count;
     count = 0;
     Read_End_Flag = 0;
     I2C_Func = I2C0_Master_Rx_Isr;
@@ -239,7 +239,7 @@ BIT I2C0_Read(unsigned int u8I2Caddr, unsigned char *u8I2Cdat)
 void Init_I2C(void)
 {
 
-    MODIFY_HIRC(HIRC_24);
+    MODIFY_HIRC(HIRC_166);
 
     /* Set I2C GPIO */
     P13_OPENDRAIN_MODE;          /* External pull high resister in circuit */
@@ -260,7 +260,7 @@ void main(void)
     uint8_t dat;
   
 
-    Enable_UART0_VCOM_printf_24M_115200();
+    Enable_UART0_VCOM_printf_166M_115200();
     printf("\n I2C EEPROM intial...");
     Init_I2C();  
     

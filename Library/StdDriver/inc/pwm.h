@@ -18,24 +18,24 @@
 #define PWM1_CH45        2
 #define PWM1_ALL         3
 
-void PWM0_ClockSource(unsigned char u8PWMCLKSource, unsigned char u8PWM0CLKDIV);
-void PWM0_ConfigOutputChannel(unsigned char u8PWM0ChannelNum,
-                              unsigned char u8PWM0OPMode,
-                              unsigned char u8PWM0PwmType,
-                              unsigned long u32PWM0Frequency,
-                              unsigned int u16PWM0DutyCycle);
-void PWM0_DeadZoneEnable(unsigned char u8PWM0Pair, unsigned int u16PWM0DZValue);
+void PWM0_ClockSource(uint8_t u8PWMCLKSource, uint8_t u8PWM0CLKDIV);
+void PWM0_ConfigOutputChannel(uint8_t u8PWM0ChannelNum,
+                              uint8_t u8PWM0OPMode,
+                              uint8_t u8PWM0PwmType,
+                              uint32_t u32PWM0Frequency,
+                              uint16_t u16PWM0DutyCycle);
+void PWM0_DeadZoneEnable(uint8_t u8PWM0Pair, uint16_t u16PWM0DZValue);
 void PWM0_DeadZone_ALL_Disable(void);
 void PWM0_RUN(void);
 void PWM0_STOP(void);
 
-void PWM1_ClockSource(unsigned char u8PWMCLKSource, unsigned char u8PWM0CLKDIV);
-void PWM1_ConfigOutputChannel(unsigned char u8PWM1ChannelNum,
-                              unsigned char u8PWM1OPMode,
-                              unsigned char u8PWM1PwmType,
-                              unsigned long u32PWM1Frequency,
-                              unsigned int u16PWM1DutyCycle);
-void PWM1_DeadZoneEnable(unsigned char u8PWM0Pair, unsigned int u16PWM0DZValue);
+void PWM1_ClockSource(uint8_t u8PWMCLKSource, uint8_t u8PWM0CLKDIV);
+void PWM1_ConfigOutputChannel(uint8_t u8PWM1ChannelNum,
+                              uint8_t u8PWM1OPMode,
+                              uint8_t u8PWM1PwmType,
+                              uint32_t u32PWM1Frequency,
+                              uint16_t u16PWM1DutyCycle);
+void PWM1_DeadZoneEnable(uint8_t u8PWM0Pair, uint16_t u16PWM0DZValue);
 void PWM1_DeadZone_ALL_Disable(void);
 void PWM1_RUN(void);
 void PWM1_STOP(void);

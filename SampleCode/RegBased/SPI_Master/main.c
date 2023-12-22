@@ -97,8 +97,8 @@ void main(void)
 {
     uint8_t u8MID,u8DID;
 
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
 
     SPI_Initial();
     Start_SPI_process(&u8MID,&u8DID);

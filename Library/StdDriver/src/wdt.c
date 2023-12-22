@@ -29,7 +29,7 @@ void WDT_ISR (void)   interrupt 10
  * @note        none
  * @example     WDT_Open(256);
  */
- void WDT_Open(unsigned int u8WDTDIV)
+ void WDT_Open(uint16_t u8WDTDIV)
 {
     SFRS=0;
     BIT_TMP=EA;
@@ -59,7 +59,7 @@ void WDT_ISR (void)   interrupt 10
  * @note        none
  * @example      WDT_Interrupt(Enable);
  */
-void WDT_Interrupt(unsigned char u8WDTINT)
+void WDT_Interrupt(uint8_t u8WDTINT)
 {
     switch (u8WDTINT)
     {

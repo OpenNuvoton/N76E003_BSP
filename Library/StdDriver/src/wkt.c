@@ -32,7 +32,7 @@ void WKT_ISR (void) __interrupt (17)            /* Vector @  0x8B  */
   * @note      limitation of the 8bit delay time. Range is 1s ~ 50s
   * @example   WKT_AutoReload_Interrupt_Initial_S(16);
 */
-void WKT_AutoReload_Interrupt_Initial_S(unsigned int u16WKTRLData)
+void WKT_AutoReload_Interrupt_Initial_S(uint16_t u16WKTRLData)
 {
     SFRS = 0; WKCON &= 0xF8; WKCON |= 0x07;     /*fix divider 2048: */
     RWK = 256 - (u16WKTRLData*5);                /* divider 2048 means 204ms per tick */ 
@@ -47,7 +47,7 @@ void WKT_AutoReload_Interrupt_Initial_S(unsigned int u16WKTRLData)
   * @note      limitation of the 8bit delay time. Range is 10 ms ~ 1000 ms
   * @example   WKT_AutoReload_Interrupt_Initial_MS(200);
 */
-void WKT_AutoReload_Interrupt_Initial_MS(unsigned int u16WKTRLData)
+void WKT_AutoReload_Interrupt_Initial_MS(uint16_t u16WKTRLData)
 {
 
     SFRS = 0; WKCON &= 0xF8; WKCON |= 0x03;     /*fix divider 64: */
@@ -67,7 +67,7 @@ void WKT_AutoReload_Interrupt_Initial_MS(unsigned int u16WKTRLData)
  * @example      WKT_Open (256,100);
  */
 
-void WKT_Open(unsigned int u16WKTDIV, unsigned char u8WKTRLData)
+void WKT_Open(uint16_t u16WKTDIV, uint8_t u8WKTRLData)
 {
     SFRS = 0;
     switch (u16WKTDIV)
@@ -90,7 +90,7 @@ void WKT_Open(unsigned int u16WKTDIV, unsigned char u8WKTRLData)
  * @return      WKT_Current_Value
  * @example      WKT_Interrupt(Enable);
  */
-void WKT_Interrupt(unsigned char u8WKTINT)
+void WKT_Interrupt(uint8_t u8WKTINT)
 {
     switch (u8WKTINT)
     {

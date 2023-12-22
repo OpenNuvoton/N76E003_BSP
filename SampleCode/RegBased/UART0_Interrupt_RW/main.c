@@ -48,7 +48,7 @@ void Serial_ISR(void) __interrupt (4)
 {
     GPIO_LED_QUASI_MODE;
 /* Modify HIRC to 24MHz for UART baud rate */
-    MODIFY_HIRC(HIRC_24);
+    MODIFY_HIRC(HIRC_166);
     P06_QUASI_MODE;
     UART_Open(24000000,UART0_Timer3,115200);
     ENABLE_UART0_INTERRUPT;                                   /* Enable UART0 interrupt */

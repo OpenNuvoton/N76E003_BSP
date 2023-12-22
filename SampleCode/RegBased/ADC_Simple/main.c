@@ -12,8 +12,8 @@ void main (void)
 {
     P12_PUSHPULL_MODE;
 /* Initial UART0 for printf */
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n Test start ...");
   
     ENABLE_ADC_AIN4;

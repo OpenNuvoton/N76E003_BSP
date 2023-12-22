@@ -64,7 +64,7 @@ void Init_I2C(void)
 //--------------------------------------------------------------------------------------------
 void I2C_Write_Process(UINT8 u8DAT)
 {
-    unsigned char  u8Count;
+    uint8_t  u8Count;
 
     set_I2TOC_I2TOCEN;                           /* Enable I2C time out */
 
@@ -127,7 +127,7 @@ void I2C_Write_Process(UINT8 u8DAT)
 //--------------------------------------------------------------------------------------------
 void I2C_Read_Process(UINT8 u8DAT)
 {
-    unsigned char  u8Count;
+    uint8_t  u8Count;
 
     Timer0_AutoReload_Interrupt_CounterClear();
     /* Read Step1 */
@@ -203,8 +203,8 @@ void I2C_Read_Process(UINT8 u8DAT)
 void main(void)
 {
     /* UART0 settting for printf function */
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n Test start ...");
 
     Init_I2C();                                 /* initial I2C circuit  */

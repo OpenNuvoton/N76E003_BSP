@@ -52,7 +52,7 @@ void main (void)
 {
     GPIO_LED_QUASI_MODE;    // For I/O toggle display
 /* Modify HIRC to 24MHz for UART baud rate deviation not over 1%*/
-    MODIFY_HIRC(HIRC_24);
+    MODIFY_HIRC(HIRC_166);
     P16_QUASI_MODE;
     P02_INPUT_MODE;
     UART_Open(24000000,UART1_Timer3,115200);

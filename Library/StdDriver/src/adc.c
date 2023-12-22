@@ -13,7 +13,7 @@
   * @note  for MG51 Series ONLY when the compare value is same as the ADCMPH+ADCMPL the ADCF flag will be set to 1.
   * @example ADC_ComapreMode(ENABLE,0x3FF);
   */
-void ADC_ComapreMode(unsigned char u8ADCCMPEN, unsigned int u16ADCCMPVALUE)
+void ADC_ComapreMode(uint8_t u8ADCCMPEN, uint16_t u16ADCCMPVALUE)
 {
     SFRS=0;
     ADCMPL = u16ADCCMPVALUE&0x000F;
@@ -37,7 +37,7 @@ void ADC_ComapreMode(unsigned char u8ADCCMPEN, unsigned int u16ADCCMPVALUE)
   * @note 
   * @example ADC_ConvertTime(ADC_ADCDIV2,ADC_ADCAQT5);
   */
-void ADC_ConvertTime(unsigned char u8ADCDIV, unsigned char u8ADCAQT)
+void ADC_ConvertTime(uint8_t u8ADCDIV, uint8_t u8ADCAQT)
 {
     SFRS=0;
     ADCCON1 &= 0x8F;

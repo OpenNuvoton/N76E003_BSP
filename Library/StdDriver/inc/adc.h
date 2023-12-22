@@ -46,7 +46,7 @@
 #define ADC_ADCAQT7                 7
 
 
-void ADC_InitialContinous(unsigned int u16ADCRBase, unsigned char u8ADCRLength);
-void ADC_ConvertTime(unsigned char u8ADCDIV, unsigned char u8ADCAQT);
-void ADC_ComapreMode(unsigned char u8ADCCMPEN, unsigned int u16ADCCMPVALUE);
+void ADC_InitialContinous(uint16_t u16ADCRBase, uint8_t u8ADCRLength);
+void ADC_ConvertTime(uint8_t u8ADCDIV, uint8_t u8ADCAQT);
+void ADC_ComapreMode(uint8_t u8ADCCMPEN, uint16_t u16ADCCMPVALUE);
 uint16_t READ_BANDGAP(void);

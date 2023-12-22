@@ -15,8 +15,8 @@ void main (void)
 {
     uint8_t   ct;
 
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n\r MCU Reset.   ");
     printf ("\n\r Toggle P0.5 to low to start test... \n\r ");
 

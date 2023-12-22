@@ -48,8 +48,8 @@ void PinInterrupt_ISR (void) __interrupt (7)
 void main (void) 
 {
   /* UART0 initial for printf */
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf("\n PIT test start!");
   /* Disable BOD for power down current */
     BOD_DISABLE;

@@ -35,8 +35,8 @@ void BOD_ISR (void) __interrupt (8)           // Vector @  0x43
 void main (void)
 {
 /* As defaut all multi function define as GPIO */ 
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n Test start ...");
 
     BOD_Open(Enable, VBOD_2_7, BOD_Reset_Disable);

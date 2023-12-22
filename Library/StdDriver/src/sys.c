@@ -13,18 +13,18 @@
   *                       - \ref HIRC_16                 :Internal HIRC 16MHz.
   *                       - \ref HIRC_166                :Internal HIRC 16.6MHz.
   * @note      None.
-  * @exmaple : MODIFY_HIRC(HIRC_24);
+  * @exmaple : MODIFY_HIRC(HIRC_166);
   */
- void MODIFY_HIRC(unsigned char u8HIRCSEL)
+ void MODIFY_HIRC(uint8_t u8HIRCSEL)
 {
 #if defined __C51__
-    unsigned char data hircmap0,hircmap1, offset,judge;
+    uint8_t data hircmap0,hircmap1, offset,judge;
 #elif defined __ICC8051__
-    unsigned char hircmap0, hircmap1, offset,judge;
+    uint8_t hircmap0, hircmap1, offset,judge;
 #elif defined __SDCC__
-    unsigned char __data hircmap0,hircmap1, offset,judge;
+    uint8_t __data hircmap0,hircmap1, offset,judge;
 #endif
-    unsigned char trimvalue16bit;
+    uint8_t trimvalue16bit;
 
     set_CHPCON_IAPEN;
     SFRS = 0 ;
@@ -95,7 +95,7 @@
   * @note      None.
   * @exmaple : FsysSelect(FSYS_LIRC);
   */
-void FsysSelect(unsigned char u8FsysMode)
+void FsysSelect(uint8_t u8FsysMode)
 {
   switch (u8FsysMode)
   {
@@ -122,7 +122,7 @@ void FsysSelect(unsigned char u8FsysMode)
   }
 }
 
-void ClockEnable(unsigned char u8FsysMode)
+void ClockEnable(uint8_t u8FsysMode)
 {
   switch (u8FsysMode)
   {
@@ -139,7 +139,7 @@ void ClockEnable(unsigned char u8FsysMode)
   }
 }
 
-void ClockDisable(unsigned char u8FsysMode)
+void ClockDisable(uint8_t u8FsysMode)
 {
   SFRS = 0;
   switch (u8FsysMode)
@@ -155,7 +155,7 @@ void ClockDisable(unsigned char u8FsysMode)
   }
 }
 
-void ClockSwitch(unsigned char u8FsysMode)
+void ClockSwitch(uint8_t u8FsysMode)
 {
   SFRS = 0 ;
   BIT_TMP=EA;EA=0;

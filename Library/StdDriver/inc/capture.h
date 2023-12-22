@@ -12,5 +12,5 @@
 #define CaptureRising     1
 #define CaptureEither     2
 
-void TIMER2_Capture(unsigned char u8CAPSource, unsigned char u8CAPLevel, unsigned char u8TM2DIV);
-void TIMER2_Capture_Interrupt(unsigned char u8CAPINT);
+void TIMER2_Capture(uint8_t u8CAPSource, uint8_t u8CAPLevel, uint8_t u8TM2DIV);
+void TIMER2_Capture_Interrupt(uint8_t u8CAPINT);

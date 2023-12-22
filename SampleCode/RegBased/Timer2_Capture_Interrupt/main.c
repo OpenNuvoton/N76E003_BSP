@@ -55,8 +55,8 @@ SFRS_TMP = SFRS;              /* for SFRS page */
 ******************************/
 void main (void)
 {
-    MODIFY_HIRC(HIRC_24);
-    Enable_UART0_VCOM_printf_24M_115200();
+    MODIFY_HIRC(HIRC_166);
+    Enable_UART0_VCOM_printf_166M_115200();
     printf ("\n ML51 series capture demo." );
 
     P03_QUASI_MODE;
