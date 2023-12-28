@@ -15,3 +15,7 @@
 1.All                         Merge sfr_macro and function define header file.
 2.eeprom/eeprom_sprom         Update to add check program data and setting error flag function. 
 3.SFRS page                   modify interrupt vector push/pop SFRS to SFR_TMP with TA protect.
+
+2023/12
+1.pwm.c                       Update Reload function.
+2.timer.c                     Update description.
