@@ -129,7 +129,7 @@ void UART_Open(uint32_t u32SysClock, uint8_t u8UARTPort,uint32_t u32Baudrate)
 
 uint8_t Receive_Data(uint8_t UARTPort)
 {
-    UINT8 c;
+    UINT8 c = 0;
     switch (UARTPort)
     {
       case UART0:
