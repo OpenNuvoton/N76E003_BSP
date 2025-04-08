@@ -22,7 +22,6 @@ uint8_t __data TH0TMP,TL0TMP,TH1TMP,TL1TMP;
 /**
   * @brief Timer0 delay interrupt initial setting and timer 0 interrupt vector 
   * @param[in] u8SYSCLK define Fsys clock value base on Fsys value.
-  *                       - \ref 24 (HIRC 24MHz )
   *                       - \ref 16 (HIRC 16MHz)
   *                       - \ref 8  (MIRC 8MHz or HIRC with clock divider)
   * @param[in] u6DLYUnit define delay time base is (us). 
@@ -33,7 +32,7 @@ uint8_t __data TH0TMP,TL0TMP,TH1TMP,TL1TMP;
   * @ref     Delay time max. value calculate = 65535 * DIV / Fsys 
   * @return  None 
   * @note    This API needs to be integrated with Timer0 interrupt subroutine.
-  * @exmaple :Timer0_AutoReload_Interrupt_Initial(24,1000);    // Fsys is 24MHz and timer base is 1ms
+  * @exmaple :Timer0_AutoReload_Interrupt_Initial(16,1000);    // Fsys is 16 and timer base is 1ms
 */
 #if 0   /* Interrup Vector demo */
 #if defined __C51__
@@ -85,7 +84,6 @@ void  Timer0_ReloadCounter(void)
 /**
   * @brief Timer1 delay interrupt initial setting and timer 1 interrupt vector  
   * @param[in] u8SYSCLK define Fsys clock value base on Fsys value.
-  *                       - \ref 24 (HIRC 24MHz )
   *                       - \ref 16 (HIRC 16MHz)
   *                       - \ref 8  (MIRC 8MHz or HIRC with clock divider)
   * @param[in] u6DLYUnit define delay time base is (us). 
@@ -96,7 +94,7 @@ void  Timer0_ReloadCounter(void)
   * @ref     Delay time max. value calculate = 65535 * DIV / Fsys 
   * @return  None 
   * @note    This API needs to be integrated with Timer1 interrupt subroutine.
-  * @exmaple :Timer1_AutoReload_Interrupt_Initial(24,1000);    // Fsys is 24MHz and timer base is 1ms
+  * @exmaple :Timer1_AutoReload_Interrupt_Initial(16,1000);    // Fsys is 16 MHz and timer base is 1ms
 */
 #if 0
 #if defined __C51__
@@ -147,7 +145,6 @@ void  Timer1_ReloadCounter(void)
 /**
   * @brief Timer2 delay interrupt initial setting and timer 1 interrupt vector  
   * @param[in] u32SYSCLK define Fsys clock value. for example 8, use the real Fsys value.
-  *                       - \ref 24 (HIRC 24MHz )
   *                       - \ref 16 (HIRC 16MHz)
   *                       - \ref 8  (MIRC 8MHz or HIRC with clock divider)
   * @param[in] u6DLYUnit define delay time base is us. the minimum delay value not less than 100us, the maxima value base on u32SYSCLK
@@ -159,7 +156,7 @@ void  Timer1_ReloadCounter(void)
   * @return  None
   * @note    Timer 2 divider fixed with 256.
   * @note    This API needs to be integrated with Timer1 interrupt subroutine.
-  * @exmaple :  Timer2_AutoReload_Interrupt_Initial(24,105000);   // Means Fsys is 24MHz and time base is 105ms
+  * @exmaple :  Timer2_AutoReload_Interrupt_Initial(16,105000);   // Means Fsys is 16 MHz and time base is 105ms
 */
 #if 0    
 #if defined __C51__
@@ -183,13 +180,11 @@ void Timer2_ISR(void)  __interrupt (5)
 
 void Timer2_AutoReload_Interrupt_Initial(uint8_t u8SYSCLK, uint32_t u32DLYUnit)
 {
-    SFRS = 0;
     TIMER2_AUTO_RELOAD_DELAY_MODE;
     TIMER2_DIV_256;                 /* fix divider 256 */
     TIMER2CT = 65535ul-(u8SYSCLK*u32DLYUnit/256ul);
     TH2 = HIBYTE(TIMER2CT);
     TL2 = LOBYTE(TIMER2CT);
-    SFRS=1;
     RCMP2H = HIBYTE(TIMER2CT);
     RCMP2L = LOBYTE(TIMER2CT);
     clr_T2CON_TF2;
@@ -200,7 +195,6 @@ void Timer2_AutoReload_Interrupt_Initial(uint8_t u8SYSCLK, uint32_t u32DLYUnit)
 /**
   * @brief Timer3 delay interrupt initial setting and timer 1 interrupt vector  
   * @param[in] u8SYSCLK define Fsys clock value. for example 24, use the real Fsys value.
-  *                       - \ref 24 (HIRC 24MHz )
   *                       - \ref 16 (HIRC 16MHz)
   *                       - \ref 8  (HIRC 8MHz or after clock divider)
   * @param[in] u6DLYUnit define delay time base is (us). 
@@ -211,7 +205,7 @@ void Timer2_AutoReload_Interrupt_Initial(uint8_t u8SYSCLK, uint32_t u32DLYUnit)
   * @return  None
   * @note    Timer3 divider fixed with 128. 
   * @note    This API needs to be integrated with Timer1 interrupt subroutine.
-  * @exmaple :  Timer3_AutoReload_Interrupt_Initial(24,105000);   // Means Fsys is 24MHz and time base is 105ms
+  * @exmaple :  Timer3_AutoReload_Interrupt_Initial(16,105000);   // Means Fsys is 16 MHz and time base is 105ms
 */
 #if 0
 #if defined __C51__

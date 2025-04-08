@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project>
+    <fileVersion>2</fileVersion>
+    <fileChecksum>184310151</fileChecksum>
+    <configuration>
+        <name>Debug</name>
+        <outputs>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\uart.c</file>
+            <file>$PROJ_DIR$\..\main.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\sys.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\iap.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\putchar.c</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\common.c</file>
+            <file>$PROJ_DIR$\Debug\Obj\putchar.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\uart.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\common.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\uart.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\cstartup.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\sys.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\common.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\ADC_PWM_Trig.pbd</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\sys.h</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.pbi</file>
+            <file>$PROJ_DIR$\Debug\Exe\ADC_PWM_Trig.d51</file>
+            <file>$PROJ_DIR$\Debug\Obj\main.r51</file>
+            <file>$PROJ_DIR$\Debug\Obj\putchar.pbi</file>
+            <file>$PROJ_DIR$\Debug\Obj\sys.r51</file>
+            <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\eeprom_sprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\bod.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdbool.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\numicro_8051.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\wdt.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\eeprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\isr.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\common.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\function_define_n76e003.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\sfr_macro_n76e003.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\math.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\iap_sprom.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\uart.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\spi.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\Device\Include\n76e003_iar.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\timer.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\wkt.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\i2c.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\adc.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\pwm.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\delay.h</file>
+            <file>$PROJ_DIR$\..\..\..\..\Library\StdDriver\inc\capture.h</file>
+            <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+        </outputs>
+        <file>
+            <name>[ROOT_NODE]</name>
+            <outputs>
+                <tool>
+                    <name>XLINK</name>
+                    <file> 17</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\uart.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 10</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 8</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 21 15 22 23 3 41 39 26 31 30 42 44 37 32 33 34 35 43 46 45 28 36 29 38 40 27 47 25</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\main.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 18</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 16</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 21 15 22 23 3 41 39 26 31 30 42 44 37 32 33 34 35 43 46 45 28 36 29 38 40 27 47 25</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\sys.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 20</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 12</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 45 21 34 38 39 43 36 27 33 35 46 28 29 40 32 26 24 31 23 30 22 42 3 44 15 37 41 47 25</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\putchar.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 7</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 19</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 21 15 22 23 3 41 39 26 31 30 42 44 37 32 33 34 35 43 46 45 28 36 29 38 40 27 47 25</file>
+                </tool>
+            </inputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</name>
+            <outputs>
+                <tool>
+                    <name>A8051</name>
+                    <file> 11</file>
+                </tool>
+            </outputs>
+        </file>
+        <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\common.c</name>
+            <outputs>
+                <tool>
+                    <name>ICC8051</name>
+                    <file> 9</file>
+                </tool>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 13</file>
+                </tool>
+            </outputs>
+            <inputs>
+                <tool>
+                    <name>BICOMP</name>
+                    <file> 24 21 15 22 23 3 41 39 26 31 30 42 44 37 32 33 34 35 43 46 45 28 36 29 38 40 27 47 25</file>
+                </tool>
+            </inputs>
+        </file>
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+    <configuration>
+        <name>Release</name>
+        <outputs />
+        <forcedrebuild>
+            <name>[MULTI_TOOL]</name>
+            <tool>XLINK</tool>
+        </forcedrebuild>
+    </configuration>
+</project>

@@ -19,3 +19,6 @@
 2023/12
 1.pwm.c                       Update Reload function.
 2.timer.c                     Update description.
+
+2025/04
+1. SDCC project               Added the parameters to display the memory size post-build.

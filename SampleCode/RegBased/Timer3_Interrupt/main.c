@@ -43,7 +43,7 @@ void main (void)
 {
     GPIO_LED_QUASI_MODE;
 
-    Timer3_AutoReload_Interrupt_Initial(24,64000);
+    Timer3_AutoReload_Interrupt_Initial(16,64000);
     ENABLE_GLOBAL_INTERRUPT;
 
     while(1);

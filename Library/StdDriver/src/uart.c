@@ -130,6 +130,7 @@ void UART_Open(uint32_t u32SysClock, uint8_t u8UARTPort,uint32_t u32Baudrate)
 uint8_t Receive_Data(uint8_t UARTPort)
 {
     UINT8 c;
+    c=0;
     switch (UARTPort)
     {
       case UART0:
@@ -159,21 +160,24 @@ uint8_t Receive_Data(uint8_t UARTPort)
   */
 void UART_Send_Data(uint8_t UARTPort, uint8_t c)
 {
-    DISABLE_UART0_INTERRUPT;
     switch (UARTPort)
     {
       case UART0:
+	    DISABLE_UART0_INTERRUPT;
         SBUF = c;
         while(!TI);
         TI=0;
+		ENABLE_UART0_INTERRUPT;
       break;
       case UART1:
+	    DISABLE_UART1_INTERRUPT;
         SBUF_1 = c;
         while(!TI_1);
         TI_1=0;
+		ENABLE_UART1_INTERRUPT;
+		ENABLE_GLOBAL_INTERRUPT;
       break;
     }
-    ENABLE_UART0_INTERRUPT;
 }
 
   /**
