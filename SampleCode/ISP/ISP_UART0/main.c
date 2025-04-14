@@ -102,12 +102,12 @@ void main (void)
 {
   
     set_CHPCON_IAPEN;
-    MODIFY_HIRC_24();
+    MODIFY_HIRC_166();
 #ifdef  isp_with_wdt
     TA=0x55;TA=0xAA;WDCON=0x07;
 #endif
 //uart initial for ISP programmer GUI, always use 115200 baudrate
-  UART0_ini_115200_24MHz();
+  UART0_ini_115200_166MHz();
   TM0_ini();
 
   g_timer0Over=0;
@@ -190,8 +190,8 @@ END_2:
               Package_checksum();
               uart_txbuf[8]=DID_lowB;  
               uart_txbuf[9]=DID_highB;  
-              uart_txbuf[10]=PID_lowB;  
-              uart_txbuf[11]=PID_highB;  
+//              uart_txbuf[10]=PID_lowB;          // N76E003 without PID 
+//              uart_txbuf[11]=PID_highB;  
               Send_64byte_To_UART0();  
               break;
             }

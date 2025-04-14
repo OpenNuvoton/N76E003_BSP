@@ -76,9 +76,9 @@ extern  __data volatile uint8_t recv_CONF0, recv_CONF1, recv_CONF2, recv_CONF4;
 #endif
 
 void TM0_ini(void);
-void MODIFY_HIRC_24(void);
+void MODIFY_HIRC_166(void);
 void MODIFY_HIRC_16(void);
-void UART0_ini_115200_24MHz(void);
+void UART0_ini_115200_166MHz(void);
 void Package_checksum(void);
 void Send_64byte_To_UART0(void);
 void UART0_ini_115200(void);
