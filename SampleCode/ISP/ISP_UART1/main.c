@@ -93,8 +93,8 @@ void main (void)
   uint8_t   vo8temp;
   uint16_t  vo16temp;
     set_CHPCON_IAPEN;
-    MODIFY_HIRC_24();
-    UART1_ini_115200_24MHz();
+    MODIFY_HIRC_166();
+    UART1_ini_115200_166MHz();
    //uart initial for ISP programmer GUI, always use 115200 baudrate
     TM0_ini();
 

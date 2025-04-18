@@ -12,8 +12,8 @@ void main(void)
   P11_PUSHPULL_MODE;
   P12_PUSHPULL_MODE;
   set_CKCON_CLOEN;
-/* clock out about  100khz base on HIRC div 160 */
-  CKDIV = 0X50;
+/* clock output divide 100 */
+  CKDIV = 50;     /* clock output 1.6MHz */
   while (P20)
   {
     MODIFY_HIRC(HIRC_16);
@@ -22,8 +22,8 @@ void main(void)
     P12 = 0;
     Timer0_Delay(16000000,5,1000);
   }
-/* HIRC modify to 24MHz  */
-  MODIFY_HIRC(HIRC_166);
+/* HIRC modify to about 16.6MHz  */
+  MODIFY_HIRC(HIRC_166);        /* clock output 1.66MHz */
   while(1);
   
 }

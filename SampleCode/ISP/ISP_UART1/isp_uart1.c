@@ -60,26 +60,40 @@ __data uint8_t hircmap0,hircmap1;
 #endif
 
 
-void MODIFY_HIRC_24(void)
+ void MODIFY_HIRC_166(void)
 {
+#if defined __C51__
+    uint8_t data hircmap0,hircmap1, offset,judge;
+#elif defined __ICC8051__
+    uint8_t hircmap0, hircmap1, offset,judge;
+#elif defined __SDCC__
+    uint8_t __data hircmap0,hircmap1, offset,judge;
+#endif
+    uint8_t trimvalue16bit;
 
-        IAPAL = 0x38;
-        IAPAH = 0x00;
-        IAPCN = READ_UID;
-        set_IAPTRG_IAPGO;
-        hircmap0 = IAPFD;
-        IAPAL = 0x39;
-        IAPAH = 0x00;
-        set_IAPTRG_IAPGO;
-        hircmap1 = IAPFD;
+    SFRS = 0 ;
+    IAPAL = 0x30;
+    IAPAH = 0x00;
+    IAPCN = READ_UID;
+    trig_IAPGO;
+    hircmap0 = IAPFD;
+    IAPAL++;
+    trig_IAPGO;
+    hircmap1 = IAPFD;
 
-        TA=0XAA;
-        TA=0X55;
-        RCTRIM0 = hircmap0;
-        TA=0XAA;
-        TA=0X55;
-        RCTRIM1 = hircmap1;
-//        clr_CHPCON_IAPEN;
+        trimvalue16bit = ((hircmap0 << 1) + (hircmap1 & 0x01));
+        judge = trimvalue16bit&0xC0;
+        offset = trimvalue16bit&0x3F;
+        trimvalue16bit -= 14;
+        hircmap1 = trimvalue16bit&0x01;
+        hircmap0 = trimvalue16bit>>1;
+
+    TA = 0xAA;
+    TA = 0x55;
+    RCTRIM0 = hircmap0;
+    TA = 0xAA;
+    TA = 0x55;
+    RCTRIM1 = hircmap1;
 }
 
 void MODIFY_HIRC_16(void)
@@ -112,13 +126,17 @@ void READ_ID(void)
     IAPAL = 0x01;
     set_IAPTRG_IAPGO;
     DID_highB = IAPFD;
-    IAPAL = 0x02;
-    set_IAPTRG_IAPGO;
-    PID_lowB = IAPFD;
-    IAPAL = 0x03;
-    set_IAPTRG_IAPGO;
-    PID_highB = IAPFD;
+    if (DID_highB == 0x67)
+    {
+      IAPAL = 0x02;
+      set_IAPTRG_IAPGO;
+      PID_lowB = IAPFD;
+      IAPAL = 0x03;
+      set_IAPTRG_IAPGO;
+      PID_highB = IAPFD;
+    }
 }
+
 void READ_CONFIG(void)
 {
     IAPCN = BYTE_READ_CONFIG;
@@ -147,7 +165,7 @@ void TM0_ini(void)
 }
 
 
-void UART1_ini_115200_24MHz(void)
+void UART1_ini_115200_166MHz(void)
 {
     P16_QUASI_MODE;                                  
     P02_INPUT_MODE;
@@ -155,8 +173,8 @@ void UART1_ini_115200_24MHz(void)
     SCON_1 = 0x50;           /*UART1 Mode1,REN_1=1 */
     T3CON = 0x88;           /*T3PS2=0,T3PS1=0,T3PS0=0(Prescale=1), UART1 in MODE 1*/
     clr_T3CON_BRCK;
-    RH3    = HIBYTE(65536 - 13);;
-    RL3    = LOBYTE(65536 - 13);
+    RH3    = 0xFF;
+    RL3    = 0xF7;
     set_T3CON_TR3;             //Trigger Timer3 
     set_EIE1_ES_1;
     EA=1;

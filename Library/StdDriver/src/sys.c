@@ -9,7 +9,6 @@
   /**
   * @brief This API configures modify system HIRC value
   * @param[in] u8FsysMode . Valid values are:
-  *                       - \ref HIRC_24                 :Internal HIRC 24MHz .
   *                       - \ref HIRC_16                 :Internal HIRC 16MHz.
   *                       - \ref HIRC_166                :Internal HIRC 16.6MHz.
   * @note      None.
@@ -18,7 +17,7 @@
  void MODIFY_HIRC(uint8_t u8HIRCSEL)
 {
 #if defined __C51__
-    uint8_t data hircmap0,hircmap1, offset,judge;
+    uint8_t data hircmap0,hircmap1, DIDhighbyte, DIDlowbyte;
 #elif defined __ICC8051__
     uint8_t hircmap0, hircmap1, offset,judge;
 #elif defined __SDCC__
@@ -26,20 +25,21 @@
 #endif
     uint8_t trimvalue16bit;
 
+    BYTE_TMP = IE;
+    EA = 0 ;
+
     set_CHPCON_IAPEN;
-    SFRS = 0 ;
-    switch (u8HIRCSEL)
-    {
-      case HIRC_24:
-        IAPAL = 0x38;
-      break;
-      case HIRC_16:
-        IAPAL = 0x30;
-      break;
-      case HIRC_166:
-        IAPAL = 0x30;
-      break;
-    }
+     /*check ID for adjust value */
+    IAPAL = 0;
+    IAPAH = 0;
+    IAPCN = READ_DID;
+    set_IAPTRG_IAPGO;
+    DIDlowbyte = IAPFD;
+    IAPAL++;
+    set_IAPTRG_IAPGO;
+    DIDhighbyte = IAPFD;
+    /* Reload 16M trim value */
+    IAPAL = 0x30;
     IAPAH = 0x00;
     IAPCN = READ_UID;
     set_IAPTRG_IAPGO;
@@ -52,28 +52,15 @@
     { 
       case HIRC_166:
         trimvalue16bit = ((hircmap0 << 1) + (hircmap1 & 0x01));
-        judge = trimvalue16bit&0xC0;
-        offset = trimvalue16bit&0x3F;
-        trimvalue16bit -= 14;
-        IAPCN = READ_DID;
-        IAPAL = 1;
-        IAPAH = 0;
-        set_IAPTRG_IAPGO_WDCLR;
-
-        if ((IAPFD==0x4B)||(IAPFD==0x52)||(IAPFD==0x53))    /* MG51 process */
-        {
-          if (offset<15)
-            {
-              if ((judge==0x40)||(judge==0x80)||(judge==0xC0))
-              trimvalue16bit -= 14;
-            }
-          else
-              trimvalue16bit -= 4;
-        }
-        hircmap0 = (trimvalue16bit >> 1);
-      break;
-
-        default: break;                                       /*N76E003 process */
+        if ((DIDhighbyte==0x67)&(DIDlowbyte==0x50))
+            trimvalue16bit -= 16;                            /*N76S003 process */
+        else if((DIDhighbyte==0x36)&(DIDlowbyte==0x50))
+            trimvalue16bit -= 14;                            /*N76E003 process */
+        hircmap1 = trimvalue16bit&0x01;
+        hircmap0 = trimvalue16bit>>1;
+        set_IAPTRG_IAPGO;
+        break;
+      default: break;                                       /*for 16M process */
     }
 
     TA = 0xAA;
@@ -83,6 +70,7 @@
     TA = 0x55;
     RCTRIM1 = hircmap1;
     clr_CHPCON_IAPEN;
+    IE = BYTE_TMP;
 }
 
 

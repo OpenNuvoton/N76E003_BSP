@@ -5,7 +5,6 @@
 #define  FSYS_OSCIN_P30  4
 #define  FSYS_HXTIN_P00  5
 
-#define  HIRC_24        6
 #define  HIRC_16        7
 #define  HIRC_166       8
 

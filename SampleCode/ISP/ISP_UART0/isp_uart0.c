@@ -84,10 +84,8 @@ __data uint8_t  hircmap0,hircmap1;
         judge = trimvalue16bit&0xC0;
         offset = trimvalue16bit&0x3F;
         trimvalue16bit -= 14;
-        IAPCN = READ_DID;
-        IAPAL = 1;
-        IAPAH = 0;
-        trig_IAPGO;
+        hircmap1 = trimvalue16bit&0x01;
+        hircmap0 = trimvalue16bit>>1;
 
     TA = 0xAA;
     TA = 0x55;
@@ -126,6 +124,15 @@ void READ_ID(void)
     IAPAL = 0x01;
     set_IAPTRG_IAPGO;
     DID_highB = IAPFD;
+    if (DID_highB == 0x67)
+    {
+      IAPAL = 0x02;
+      set_IAPTRG_IAPGO;
+      PID_lowB = IAPFD;
+      IAPAL = 0x03;
+      set_IAPTRG_IAPGO;
+      PID_highB = IAPFD;
+    }
 }
 
 void READ_CONFIG(void)

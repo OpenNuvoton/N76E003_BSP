@@ -190,8 +190,8 @@ END_2:
               Package_checksum();
               uart_txbuf[8]=DID_lowB;  
               uart_txbuf[9]=DID_highB;  
-//              uart_txbuf[10]=PID_lowB;          // N76E003 without PID 
-//              uart_txbuf[11]=PID_highB;  
+              uart_txbuf[10]=PID_lowB;          // N76E003 without PID 
+              uart_txbuf[11]=PID_highB;  
               Send_64byte_To_UART0();  
               break;
             }

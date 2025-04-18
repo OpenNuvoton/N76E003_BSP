@@ -71,10 +71,10 @@ extern  __data uint8_t PID_highB,PID_lowB,DID_highB,DID_lowB,CONF0,CONF1,CONF2,C
 extern  __data uint8_t recv_CONF0,recv_CONF1,recv_CONF2,recv_CONF4;extern  __data volatile uint32_t g_totalchecksum;
 #endif
 
-void MODIFY_HIRC_24(void);
+void MODIFY_HIRC_166(void);
 void MODIFY_HIRC_16(void);
 void TM0_ini(void);
-void UART1_ini_115200_24MHz(void);
+void UART1_ini_115200_166MHz(void);
 void Package_checksum(void);
 void Send_64byte_To_UART1(void);
 void READ_ID(void);
