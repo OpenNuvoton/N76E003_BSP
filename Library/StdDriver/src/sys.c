@@ -19,9 +19,9 @@
 #if defined __C51__
     uint8_t data hircmap0,hircmap1, DIDhighbyte, DIDlowbyte;
 #elif defined __ICC8051__
-    uint8_t hircmap0, hircmap1, offset,judge;
+    uint8_t hircmap0, hircmap1, offset,judge, DIDhighbyte, DIDlowbyte;
 #elif defined __SDCC__
-    uint8_t __data hircmap0,hircmap1, offset,judge;
+    uint8_t __data hircmap0,hircmap1,DIDhighbyte, DIDlowbyte;
 #endif
     uint8_t trimvalue16bit;
 
