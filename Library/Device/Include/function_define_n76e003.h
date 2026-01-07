@@ -355,7 +355,8 @@ typedef __bit                 BIT;
 #define    CLEAR_I2C_TIMEOUT_INTERRUPT_FLAG  clr_I2TOC_I2TOF
 #define    CLEAR_WKT_INTERRUPT_FLAG          clr_WKCON_WKTF
 #define    CLEAR_TIMER3_INTERRUPT_FLAG       clr_T3CON_TF3
-#define    CLEAR_UART1_INTERRUPT_FLAG        clr_EIE1_ES_1 
+#define    CLEAR_UART1_INTERRUPT_RI_FLAG     clr_SCON_1_RI_1
+#define    CLEAR_UART1_INTERRUPT_TI_FLAG     clr_SCON_1_TI_1  
 
 /*****************************************************************************/
 /*    For GPIO Mode setting                                                  */ 

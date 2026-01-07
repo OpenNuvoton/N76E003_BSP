@@ -2230,6 +2230,9 @@
             <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\common.c</name>
         </file>
         <file>
+            <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\i2c.c</name>
+        </file>
+        <file>
             <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\iap.c</name>
         </file>
         <file>
@@ -2251,6 +2254,9 @@
             <name>$PROJ_DIR$\..\..\..\..\Library\Startup\IAR\cstartup.s51</name>
         </file>
     </group>
+    <file>
+        <name>$PROJ_DIR$\..\..\..\..\Library\StdDriver\src\delay.c</name>
+    </file>
     <file>
         <name>$PROJ_DIR$\..\main.c</name>
     </file>

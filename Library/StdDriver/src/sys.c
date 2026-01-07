@@ -19,9 +19,9 @@
 #if defined __C51__
     uint8_t data hircmap0,hircmap1, DIDhighbyte, DIDlowbyte;
 #elif defined __ICC8051__
-    uint8_t hircmap0, hircmap1, offset,judge, DIDhighbyte, DIDlowbyte;
+    uint8_t hircmap0, hircmap1, DIDhighbyte, DIDlowbyte;
 #elif defined __SDCC__
-    uint8_t __data hircmap0,hircmap1,DIDhighbyte, DIDlowbyte;
+    uint8_t __data hircmap0,hircmap1, DIDhighbyte, DIDlowbyte;
 #endif
     uint8_t trimvalue16bit;
 
@@ -58,7 +58,7 @@
             trimvalue16bit -= 14;                            /*N76E003 process */
         hircmap1 = trimvalue16bit&0x01;
         hircmap0 = trimvalue16bit>>1;
-        set_IAPTRG_IAPGO;
+//        set_IAPTRG_IAPGO;
         break;
       default: break;                                       /*for 16M process */
     }

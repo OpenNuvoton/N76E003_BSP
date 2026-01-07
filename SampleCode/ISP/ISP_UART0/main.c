@@ -136,7 +136,7 @@ while(1)
               IAPCN = BYTE_READ_AP;              //program byte verify
               vo8temp = uart_rcvbuf[count];
               if(IAPFD!=vo8temp)
-              while(1);                          
+              while(1);
               if (CHPCON==0x43)              //if error flag set, program error stop ISP
               while(1);
 
@@ -156,7 +156,7 @@ END_2:
             uart_txbuf[9]=(g_totalchecksum>>8)&0xff;
             Send_64byte_To_UART0();
           }
-            
+
           switch(uart_rcvbuf[0])
           {
             case CMD_CONNECT:

@@ -62,28 +62,37 @@ __data uint8_t  hircmap0,hircmap1;
  void MODIFY_HIRC_166(void)
 {
 #if defined __C51__
-    uint8_t data hircmap0,hircmap1, offset,judge;
+    uint8_t data hircmap0,hircmap1, DIDhighbyte, DIDlowbyte;
 #elif defined __ICC8051__
-    uint8_t hircmap0, hircmap1, offset,judge;
+    uint8_t hircmap0, hircmap1, DIDhighbyte, DIDlowbyte;
 #elif defined __SDCC__
-    uint8_t __data hircmap0,hircmap1, offset,judge;
+    uint8_t __data hircmap0,hircmap1, DIDhighbyte, DIDlowbyte;
 #endif
-    uint8_t trimvalue16bit;
+    uint16_t trimvalue16bit;
 
-    SFRS = 0 ;
+    set_CHPCON_IAPEN;
+     /*check ID for adjust value */
+    IAPAL = 0;
+    IAPAH = 0;
+    IAPCN = READ_DID;
+    set_IAPTRG_IAPGO;
+    DIDlowbyte = IAPFD;
+    IAPAL++;
+    set_IAPTRG_IAPGO;
+    DIDhighbyte = IAPFD;
+    /* Reload 16M trim value */
     IAPAL = 0x30;
     IAPAH = 0x00;
     IAPCN = READ_UID;
-    trig_IAPGO;
+    set_IAPTRG_IAPGO;
     hircmap0 = IAPFD;
     IAPAL++;
-    trig_IAPGO;
+    set_IAPTRG_IAPGO;
     hircmap1 = IAPFD;
 
         trimvalue16bit = ((hircmap0 << 1) + (hircmap1 & 0x01));
-        judge = trimvalue16bit&0xC0;
-        offset = trimvalue16bit&0x3F;
-        trimvalue16bit -= 14;
+        if((DIDhighbyte==0x36)&(DIDlowbyte==0x50))
+            trimvalue16bit -= 14;                            /*N76E003 process */
         hircmap1 = trimvalue16bit&0x01;
         hircmap0 = trimvalue16bit>>1;
 
@@ -93,6 +102,7 @@ __data uint8_t  hircmap0,hircmap1;
     TA = 0xAA;
     TA = 0x55;
     RCTRIM1 = hircmap1;
+    clr_CHPCON_IAPEN;
 }
 
 void MODIFY_HIRC_16(void)

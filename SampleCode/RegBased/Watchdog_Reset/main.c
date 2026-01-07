@@ -20,7 +20,7 @@ void main (void)
 
 	GPIO_LED_QUASI_MODE;
 /* Note WDT timer base is LIRC 10Khz*/
-	MODIFY_HIRC(HIRC_166);
+//	MODIFY_HIRC(HIRC_166);
 	Enable_UART0_VCOM_printf_166M_115200();
     printf("\n\r  Test start MCU reset ");
     WDT_Clear();

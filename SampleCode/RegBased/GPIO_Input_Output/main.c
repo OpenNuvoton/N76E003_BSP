@@ -39,4 +39,3 @@ void main (void)
       Timer2_Delay(24000000,4,200,1000);
     }
 }
-

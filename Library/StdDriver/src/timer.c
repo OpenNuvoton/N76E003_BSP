@@ -73,13 +73,21 @@ void Timer0_AutoReload_Interrupt_Initial(uint8_t u8SYSCLK, uint32_t u32DLYUnit)
     ENABLE_TIMER0_INTERRUPT;                         /* Enable timer0 Interrupt */
 }
 
-void  Timer0_ReloadCounter(void)
+void Timer0_ReloadCounter(void)
 {
     clr_TCON_TR0;
     TH0 = TH0TMP;
     TL0 = TL0TMP;
     clr_TCON_TF0;
     set_TCON_TR0;
+}
+
+
+void Timer0_Interrupt_Disable(void)
+{
+    clr_TCON_TR0;
+    clr_TCON_TF0;
+    DISABLE_TIMER0_INTERRUPT;
 }
 /**
   * @brief Timer1 delay interrupt initial setting and timer 1 interrupt vector  

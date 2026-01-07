@@ -7,15 +7,11 @@
 #include "numicro_8051.h"
 
 
-#define I2C_SLAVE_ADDRESS         0xA0
+#define I2C_SLAVE_ADDRESS         0xA4
 #define LOOP_SIZE                 10 
 
-#define SDA                       P14
-#define SCL                       P13
-
-uint8_t data_received[34], data_num = 0 ;
-uint16_t u16PageOffset_HB,u16ReadAddress;
-BIT I2CWOVERFLAG;
+uint8_t data_received[10], DataRevCounter = 0, DataSendCounter = 0 ;
+BIT i2cReceiveOverflag;
 
 /**
   * @brief     I2C interrupt vector.
@@ -50,10 +46,9 @@ void I2C0_ISR(void) __interrupt (6)
         break;
 
         case 0x80:
-            data_received[data_num] = I2DAT;
-            u16ReadAddress = (data_received[0]<<8) + data_received[1];  //This for read process
-            data_num++;
-            if (data_num == 32)   /* 2 byte address + 30 bytes Data */
+            data_received[DataRevCounter] = I2DAT;
+            DataRevCounter++;
+            if (DataRevCounter == 10) 
             {
                 clr_I2CON_AA;
             }
@@ -62,47 +57,34 @@ void I2C0_ISR(void) __interrupt (6)
         break;
 
         case 0x88:
-            data_received[data_num] = I2DAT;
-            data_num = 0;
+            data_received[DataRevCounter] = I2DAT;
+            DataRevCounter = 0;
             clr_I2CON_AA;
         break;
 
         case 0xA0:
-
-            if (data_num>20)
+            if (DataRevCounter==10)
             {
-               I2CWOVERFLAG = 1 ;
+               i2cReceiveOverflag = 1 ;
             }
-            data_num =0;
+            DataRevCounter =0;
             set_I2CON_AA;
         break;
 
         case 0xA8:
-#if defined __C51__
-            I2DAT = Read_APROM_BYTE((uint16_t code *)(u16ReadAddress+data_num));
-#elif defined __ICC8051__
-            I2DAT = Read_APROM_BYTE((uint16_t __code*)(u16ReadAddress+data_num));
-#elif defined __SDCC__
-            I2DAT = Read_APROM_BYTE((uint16_t __code*)(u16ReadAddress+data_num));
-#endif
-            data_num++;
+            I2DAT = data_received[DataSendCounter];
+            DataSendCounter++;
             set_I2CON_AA;
         break;
 
         case 0xB8: 
-#if defined __C51__
-            I2DAT = Read_APROM_BYTE((uint16_t code *)(u16ReadAddress+data_num));
-#elif defined __ICC8051__
-            I2DAT = Read_APROM_BYTE((uint16_t __code*)(u16ReadAddress+data_num));
-#elif defined __SDCC__
-            I2DAT = Read_APROM_BYTE((uint16_t __code*)(u16ReadAddress+data_num));
-#endif
-            data_num++;
+            I2DAT = data_received[DataSendCounter];
+            DataSendCounter++;
             set_I2CON_AA;
         break;
 
         case 0xC0:
-            data_num = 0;
+            DataSendCounter = 0;
             set_I2CON_AA;
         break; 
 
@@ -122,15 +104,16 @@ void I2C0_ISR(void) __interrupt (6)
 //========================================================================================================
 void Init_I2C_Slave_Interrupt(void)
 {
-    P13_OPENDRAIN_MODE;          /* External pull high resister in circuit */
-    P14_OPENDRAIN_MODE;          /* External pull high resister in circuit */
-    set_P1S_3;                   /* Setting schmit tigger mode */
-    set_P1S_4;                   /* Setting schmit tigger mode */
+    P13_QUASI_MODE;          /* External pull high resister in circuit */
+    P14_QUASI_MODE;          /* External pull high resister in circuit */
+
+    P13_ST_ENABLE;               /* Setting schmit tigger mode */
+    P14_ST_ENABLE;               /* Setting schmit tigger mode */
   
-    SDA = 1;                     /* set SDA and SCL pins high */
-    SCL = 1;
+    P13 = 1;                     /* set SDA and SCL pins high */
+    P14 = 1;
   
-    I2C_Slave_Open(I2C_SLAVE_ADDRESS) ;
+    I2C_Slave_Open(I2C_SLAVE_ADDRESS);
     I2C_Interrupt(ENABLE);
 }
 
@@ -143,22 +126,22 @@ void Init_I2C_Slave_Interrupt(void)
 void main(void)
 {
 
-    MODIFY_HIRC(HIRC_166);
     Enable_UART0_VCOM_printf_166M_115200();
+    printf ("\n I2C slave start.");
 
   /* Initial I2C function */
-    I2CWOVERFLAG = 0;
+    i2cReceiveOverflag = 0;
     Init_I2C_Slave_Interrupt();                                 //initial I2C circuit
-    EA =1;
+    ENABLE_GLOBAL_INTERRUPT;
 
     while (1)
     {
-         if (I2CWOVERFLAG )
+         if (i2cReceiveOverflag)
         {
            /* After receive storage in dataflash */
-           u16PageOffset_HB =  (data_received[0]<<8) + data_received[1];
-           Write_DATAFLASH_ARRAY(u16PageOffset_HB, data_received+2, 32);
-           I2CWOVERFLAG = 0;
+           Write_DATAFLASH_ARRAY(0x3000, data_received, 10);
+           i2cReceiveOverflag = 0;
+           printf ("\n I2C slave receive data write in 0x3000...DONE.");
         }
      }
 

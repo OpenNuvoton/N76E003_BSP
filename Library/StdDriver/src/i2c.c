@@ -18,12 +18,12 @@
   * @details    The function enable the specify I2C controller and set proper clock divider
   *             in I2C CLOCK DIVIDED REGISTER (I2CLK) according to the target I2C Bus clock.
   *             I2C bus clock = PCLK / (4*(u32I2CCLK+1).
-  * @exmaple :  I2C_Open(24000000,100000);
+  * @exmaple :  I2C_Master_Open(24000000,100000);
   */
 void I2C_Master_Open(uint32_t u32SYSCLK, uint32_t u32I2CCLK)
 {
     SFRS = 0x00;
-    I2CLK = (u32SYSCLK/4/u32I2CCLK-1); 
+    I2CLK = (u32SYSCLK/4UL/u32I2CCLK -1UL); 
     set_I2CON_I2CEN;
 
 }
@@ -136,20 +136,18 @@ void I2C_ClearTimeoutFlag(void)
 void I2C0_SI_Check(void)
 {
     clr_I2CON_SI;
-    
     while(I2CON&SET_BIT3)     /* while SI==1; */
     {
         if(I2STAT == 0x00)
         {
             set_I2CON_STO;
         }
-        SI = 0;
+        clr_I2CON_SI;
         if(!SI)
         {
             clr_I2CON_I2CEN;
             set_I2CON_I2CEN;
             clr_I2CON_SI;
-            clr_I2CON_I2CEN;
         } 
     }
 }

@@ -225,14 +225,6 @@ END_2:
               IAPFD = 0xFF;          //Erase must set IAPFD = 0xFF
               IAPCN = PAGE_ERASE_AP;
 
-              g_totalchecksum=0;
-              flash_address=0;
-              AP_size=0;
-              AP_size=rx_buf[12];
-              vo8temp=rx_buf[13];
-              AP_size|=(vo8temp<<8);  
-              g_progarmflag=1;
-			  
               for(flash_address=0x0000;flash_address<APROM_SIZE/PAGE_SIZE;flash_address++)
               {        
                 IAPAL = LOBYTE(flash_address*PAGE_SIZE);
@@ -243,6 +235,14 @@ END_2:
               trig_IAPGO;
 #endif
               }
+
+              g_totalchecksum=0;
+              flash_address=0;
+              AP_size=0;
+              AP_size=rx_buf[12];
+              vo8temp=rx_buf[13];
+              AP_size|=(vo8temp<<8);  
+              g_progarmflag=1;
 
               for(count=16;count<64;count++)
               {

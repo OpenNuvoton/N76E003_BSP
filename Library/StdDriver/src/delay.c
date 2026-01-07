@@ -53,7 +53,7 @@ void Timer0_Delay(uint32_t u32SYSCLK, uint16_t u16CNT, uint16_t u16DLYUnit)
   *                       - \ref 100 (100us)
   * @return  None
   * @note    If use LIRC or LXT as Fsys need adjust this marco.
-  * @exmaple :  Timer1_Delay(24000000,5,1000);
+  * @exmaple :  Timer1_Delay(16000000,5,1000);
 */
 void Timer1_Delay(uint32_t u32SYSCLK, uint16_t u16CNT, uint16_t u16DLYUnit)
 {
