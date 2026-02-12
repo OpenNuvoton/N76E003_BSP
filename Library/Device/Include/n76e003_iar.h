@@ -9,7 +9,7 @@
 /*  Header file of Nuvoton                                                              */
 /*  N76E003AT20 / N76E003AQ20                                                           */
 /*--------------------------------------------------------------------------------------*/
-#include "sfr_macro_N76E003.h"
+#include "sfr_macro_n76e003.h"
 
 /*  BYTE Registers  */
 /*  SFR page 0      */

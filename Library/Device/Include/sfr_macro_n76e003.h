@@ -32,7 +32,7 @@
 /******************************************************************************/
 /*                         Peripheral header files                            */
 /******************************************************************************/
-#include "function_define_N76E003.h"
+#include "function_define_n76e003.h"
 #include "adc.h"
 #include "bod.h"
 #include "capture.h"
