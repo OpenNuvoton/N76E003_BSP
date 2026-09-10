@@ -1,0 +1,14 @@
+# N76E003 Product SBOM scope
+# Runtime / product-integrated first-party sources.
+# Paths are relative to the BSP root and follow the actual N76E003 layout
+# (a single-family 8051 BSP with one Library/ and one SampleCode/).
+# Only include:, exclude: and their "- path:" entries are parsed by
+# tools/gen_bsp_sbom.py.
+sbomType: Product SBOM
+include:
+  - path: Library/Device
+  - path: Library/Startup
+  - path: Library/StdDriver
+exclude:
+  - path: Document/
+  - path: SampleCode/

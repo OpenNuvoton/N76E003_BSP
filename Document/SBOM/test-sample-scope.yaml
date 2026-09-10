@@ -1,0 +1,10 @@
+# N76E003 Test Sample SBOM scope
+# Examples, demos, ISP utilities and build/IDE projects.
+# These are NOT product runtime dependencies unless the customer integrates
+# them. Paths are relative to the BSP root.
+sbomType: Test Sample SBOM
+include:
+  - path: SampleCode
+exclude:
+  - path: Document/
+  - path: Library/
