@@ -1,13 +1,13 @@
 {
   "manifestFormat": "MCU-BSP-SBOM-Manifest",
   "manifestVersion": "1.0",
-  "serialNumber": "urn:uuid:3122eaa7-eb96-4802-8278-d3b58a3e6818",
-  "createdAt": "2026-09-10T01:03:49.065147Z",
+  "serialNumber": "urn:uuid:8540c6d1-8d2b-45eb-9f3c-4ac7fd33206a",
+  "createdAt": "2026-10-07T02:43:37.526904Z",
   "bsp": {
     "name": "N76E003_BSP",
-    "version": "d5f9dbc",
+    "version": "0967deb",
     "releaseIdentifierSource": "SBOM file name",
-    "gitDescribe": "d5f9dbc"
+    "gitDescribe": "0967deb"
   },
   "sbomPackage": {
     "name": "MCU BSP SBOM Package",
@@ -20,18 +20,18 @@
   },
   "sboms": [
     {
-      "fileName": "N76E003_BSP_Product_SBOM_d5f9dbc_cdx.json",
+      "fileName": "N76E003_BSP_Product_SBOM_0967deb_cdx.json",
       "sbomType": "Product SBOM",
       "bomFormat": "CycloneDX",
       "specVersion": "1.7",
-      "serialNumber": "urn:uuid:dd5a72fa-9a47-4bae-befe-76960ff3deff",
+      "serialNumber": "urn:uuid:f2ab2f26-9a61-4292-8521-96093a01d307",
       "sbomVersion": 1,
-      "generatedTimestamp": "2026-09-10T09:03:46+08:00",
+      "generatedTimestamp": "2026-10-07T10:43:35+08:00",
       "metadataComponent": {
         "bomRef": "ec050c980955acba",
         "type": "library",
         "name": "MCU Driver",
-        "version": "d5f9dbc",
+        "version": "0967deb",
         "properties": [
           {
             "name": "bsp:sbom-category",
@@ -92,22 +92,22 @@
       },
       "hash": {
         "algorithm": "SHA-256",
-        "value": "5aa0d0d77264d3b136378fcdab894f6aede2812cfffb39a7223599960d6e468e"
+        "value": "2674bcec392c0b6baca47cd08e77630fb13efe3f0ec254f87e312a8c034a9256"
       }
     },
     {
-      "fileName": "N76E003_BSP_TestSample_SBOM_d5f9dbc_cdx.json",
+      "fileName": "N76E003_BSP_TestSample_SBOM_0967deb_cdx.json",
       "sbomType": "Test Sample SBOM",
       "bomFormat": "CycloneDX",
       "specVersion": "1.7",
-      "serialNumber": "urn:uuid:0978bdce-50a6-4710-b0a3-cbcd84662033",
+      "serialNumber": "urn:uuid:72b93cc0-d483-4fdc-b045-a36fcc99943b",
       "sbomVersion": 1,
-      "generatedTimestamp": "2026-09-10T09:03:48+08:00",
+      "generatedTimestamp": "2026-10-07T10:43:37+08:00",
       "metadataComponent": {
         "bomRef": "6b965e1c5b09e659",
         "type": "application",
         "name": "MCU Test Sample",
-        "version": "d5f9dbc",
+        "version": "0967deb",
         "properties": [
           {
             "name": "bsp:sbom-category",
@@ -158,11 +158,11 @@
       },
       "hash": {
         "algorithm": "SHA-256",
-        "value": "b3ea83f103475b47f4fa1390955e67106d85562f9c66fc7adb0b83c954b11583"
+        "value": "6ee88d0c44a3267022a302afd13973c2105872831058442fc7d8959b6bfce555"
       },
       "relationshipToProductSbom": {
         "usesProductComponents": true,
-        "productSbomFile": "N76E003_BSP_Product_SBOM_d5f9dbc_cdx.json",
+        "productSbomFile": "N76E003_BSP_Product_SBOM_0967deb_cdx.json",
         "description": "Test sample firmware may be built using MCU Driver components described in the Product SBOM. These product components are not duplicated in the Test Sample SBOM."
       }
     }

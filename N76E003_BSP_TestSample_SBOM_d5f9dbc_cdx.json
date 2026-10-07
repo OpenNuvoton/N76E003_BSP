@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:0978bdce-50a6-4710-b0a3-cbcd84662033",
+  "serialNumber": "urn:uuid:72b93cc0-d483-4fdc-b045-a36fcc99943b",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-10T09:03:48+08:00",
+    "timestamp": "2026-10-07T10:43:37+08:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,14 @@
       "bom-ref": "6b965e1c5b09e659",
       "type": "application",
       "name": "MCU Test Sample",
-      "version": "d5f9dbc",
+      "version": "0967deb",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/n76e003_bsp-testsample@0967deb",
       "licenses": [
         {
           "license": {
@@ -62,6 +69,12 @@
           "value": "Library/"
         }
       ]
+    },
+    "manufacturer": {
+      "name": "Nuvoton Technology Corporation",
+      "url": [
+        "https://www.nuvoton.com"
+      ]
     }
   },
   "components": [
@@ -69,7 +82,14 @@
       "type": "application",
       "bom-ref": "n76e003_bsp:test-sample-component:samplecode",
       "name": "N76E003_ SampleCode",
-      "version": "d5f9dbc",
+      "version": "0967deb",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/n76e003_bsp-samplecode@0967deb",
       "licenses": [
         {
           "license": {

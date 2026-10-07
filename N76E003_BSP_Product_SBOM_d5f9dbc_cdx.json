@@ -2,10 +2,10 @@
   "$schema": "http://cyclonedx.org/schema/bom-1.7.schema.json",
   "bomFormat": "CycloneDX",
   "specVersion": "1.7",
-  "serialNumber": "urn:uuid:dd5a72fa-9a47-4bae-befe-76960ff3deff",
+  "serialNumber": "urn:uuid:f2ab2f26-9a61-4292-8521-96093a01d307",
   "version": 1,
   "metadata": {
-    "timestamp": "2026-09-10T09:03:46+08:00",
+    "timestamp": "2026-10-07T10:43:35+08:00",
     "tools": {
       "components": [
         {
@@ -20,7 +20,14 @@
       "bom-ref": "ec050c980955acba",
       "type": "library",
       "name": "MCU Driver",
-      "version": "d5f9dbc",
+      "version": "0967deb",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/n76e003_bsp-product@0967deb",
       "licenses": [
         {
           "license": {
@@ -74,6 +81,12 @@
           "value": "SampleCode/"
         }
       ]
+    },
+    "manufacturer": {
+      "name": "Nuvoton Technology Corporation",
+      "url": [
+        "https://www.nuvoton.com"
+      ]
     }
   },
   "components": [
@@ -81,7 +94,14 @@
       "type": "library",
       "bom-ref": "n76e003_bsp:product-component:library-device",
       "name": "N76E003_ Device",
-      "version": "d5f9dbc",
+      "version": "0967deb",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/n76e003_bsp-library-device@0967deb",
       "licenses": [
         {
           "license": {
@@ -126,7 +146,14 @@
       "type": "library",
       "bom-ref": "n76e003_bsp:product-component:library-startup",
       "name": "N76E003_ Startup",
-      "version": "d5f9dbc",
+      "version": "0967deb",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/n76e003_bsp-library-startup@0967deb",
       "licenses": [
         {
           "license": {
@@ -171,7 +198,14 @@
       "type": "library",
       "bom-ref": "n76e003_bsp:product-component:library-stddriver",
       "name": "N76E003_ StdDriver",
-      "version": "d5f9dbc",
+      "version": "0967deb",
+      "supplier": {
+        "name": "Nuvoton Technology Corporation",
+        "url": [
+          "https://www.nuvoton.com"
+        ]
+      },
+      "purl": "pkg:generic/nuvoton/n76e003_bsp-library-stddriver@0967deb",
       "licenses": [
         {
           "license": {
